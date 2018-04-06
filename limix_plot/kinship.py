@@ -14,9 +14,9 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
         Kinship matrix.
     nclusters : int, str, optional
         Number of blocks to be seen from the heatmap. It defaults to ``1``,
-        which means that no ordering is performed. Pass 'auto' to automatically
-        determine the number of clusters. Pass an integer to select the number
-        of clusters.
+        which means that no ordering is performed. Pass ``"auto"`` to
+        automatically determine the number of clusters. Pass an integer to
+        select the number of clusters.
     img_kws : dict, optional
         Keyword arguments forwarded to the matplotlib pcolormesh function.
     ax : matplotlib axis, optional

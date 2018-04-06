@@ -24,7 +24,6 @@ Heatmap plot for kinship matrix
 .. automodule:: limix_plot.kinship
     :members:
 
-
 Comments and bugs
 =================
 
