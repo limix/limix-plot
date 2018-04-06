@@ -18,9 +18,9 @@ Quantile-quantile plot
 .. automodule:: limix_plot.qqplot
   :members:
 
-*****************
+
 Comments and bugs
-*****************
+=================
 
 You can get the source and open issues `on Github.`_
 

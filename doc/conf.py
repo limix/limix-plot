@@ -17,7 +17,6 @@ def get_name():
 
 
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.doctest',
               'sphinx.ext.viewcode',
               'sphinx.ext.napoleon',
               'matplotlib.sphinxext.only_directives',
