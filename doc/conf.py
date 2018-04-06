@@ -19,7 +19,9 @@ def get_name():
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.doctest',
               'sphinx.ext.viewcode',
-              'sphinx.ext.napoleon']
+              'sphinx.ext.napoleon',
+              'matplotlib.sphinxext.only_directives',
+              'matplotlib.sphinxext.plot_directive']
 
 templates_path = ['_templates']
 source_suffix = '.rst'
@@ -40,7 +42,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_static_path = ['_static']
 html_sidebars = {
     '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
+        'relations.html',
         'searchbox.html',
     ]
 }

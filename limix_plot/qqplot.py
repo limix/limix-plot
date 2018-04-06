@@ -14,13 +14,13 @@ def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
 
     Parameters
     ----------
-    a : Series, 1d-array, or list
+    a : Series, 1d-array, list
         Observed p-values.
     label : string, optional
         Legend label for the relevent component of the plot.
     alpha : float, optional
-        Significance level defining the band boundary. Set to ``None`` to
-        disable plotting. Defaults to ``0.05``.
+        Significance level defining the confidfence interval. Set to ``None``
+        to disable plotting. Defaults to ``0.05``.
     cutoff : float, optional
         P-values higher than `cutoff` will not be plotted. Defaults to ``0.1``.
     line : bool, optional
@@ -37,7 +37,44 @@ def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
     Returns
     -------
     ax : matplotlib Axes
-        Returns the Axes object with the plot for further tweaking.
+        Axes object with the plot for further tweaking.
+
+    Examples
+    --------
+    .. plot::
+        :include-source:
+
+        >>> import matplotlib.pyplot as plt
+        >>> import limix_plot as lp
+        >>> from numpy.random import RandomState
+        >>>
+        >>> random = RandomState(1)
+        >>>
+        >>> pv0 = random.rand(10000)
+        >>> pv0[0] = 1e-6
+        >>>
+        >>> pv1 = random.rand(10000)
+        >>> pv2 = random.rand(10000)
+        >>>
+        >>> lp.qqplot(pv0)
+        >>> plt.show()
+
+        >>> lp.qqplot(pv0)
+        >>> lp.qqplot(pv1, line=False, alpha=None)
+        >>> plt.show()
+
+        >>> lp.qqplot(pv1)
+        >>> lp.qqplot(pv2, line=False, alpha=None)
+        >>> lp.box_aspect()
+        >>> plt.show()
+
+        >>> lp.qqplot(pv0, label='label0', band_kws=dict(color='#EE0000',
+        ...                                              alpha=0.2))
+        >>> lp.qqplot(pv1, label='label1', line=False, alpha=None)
+        >>> ax = lp.qqplot(pv2, label='label2', line=False,
+        ...                alpha=None, pts_kws=dict(marker='*'))
+        >>> ax.legend()
+        >>> plt.show()
     """
 
     a = asarray(a)
