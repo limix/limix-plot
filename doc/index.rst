@@ -24,6 +24,12 @@ Heatmap plot for kinship matrix
 .. automodule:: limix_plot.kinship
     :members:
 
+Plot an image
+=============
+
+.. automodule:: limix_plot.image
+    :members:
+
 Comments and bugs
 =================
 
