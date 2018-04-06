@@ -16,7 +16,13 @@ Quantile-quantile plot
 ======================
 
 .. automodule:: limix_plot.qqplot
-  :members:
+    :members:
+
+Heatmap plot for kinship matrix
+===============================
+
+.. automodule:: limix_plot.kinship
+    :members:
 
 
 Comments and bugs
