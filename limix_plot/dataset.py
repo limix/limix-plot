@@ -20,6 +20,10 @@ def load_dataset(name):
         c = urlopen("http://rest.s3for.me/limix/dali.jpg.bz2").read()
         o = bz2.decompress(c)
         return io.BytesIO(o)
+    elif name == 'gwas':
+        c = urlopen("http://rest.s3for.me/limix/mdd.pkl.bz2").read()
+        o = bz2.decompress(c)
+        return io.BytesIO(o)
 
     raise ValueError("Unknown dataset {}.".format(name))
 

@@ -1,3 +1,4 @@
+adjustText>=0.6.1
 matplotlib>=2.2.2
 numpy>=1.14.2
 pandas>=0.22.0
