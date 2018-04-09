@@ -8,3 +8,5 @@ scikit-learn>=0.19.1
 scipy>=1.0.1
 setuptools>=39.0.1
 tqdm>=4.19.9
+sphinx_rtd_theme>=0.2.4
+sphinx>=1.6.7
