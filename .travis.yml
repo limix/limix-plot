@@ -11,3 +11,11 @@ notifications:
     - danilo.horta@gmail.com
     on_success: never
     on_failure: always
+deploy:
+  provider: pypi
+  user: dhorta
+  password:
+    secure: eAo9YMAyfe6kVFq+bCChh3LfJBTfI85RnlNo2qgCfmgNfy8Vp8GwpNB5LfD2BfY5YcqnihZJdh+3Nmcsa99IxavU9XtPCtvUeYOuy/u/qagdJfeLjCtuAmr8OeJSvl95Bmd7/toWkG8CgfAKFJnxsVF+ggwA+RYCgvnbml/cR5qyvXox0kyWGWEmtyiX1dMs/Vqa4I3Ca/JctEZAGM0qmfAiDg4//DVjdcJbVmYfpOLNX+jdAk7nK1x6p4L9XZj4oZh2EDjPeHblrCqcrdmrTPV7wR87mE0lQRM4jBr7r3+dAu2WIYzDqYUUCou50/9CH1Itx/hPW+sJnt+m/e6SowGhtdu8hnquQ5hivj4a7SYf/cfUDt0FdaeAPn0uyfw8QsYYk07ZwsqFf7Bg43piVcrYyWUSQfbyBZlophyj9p2ScJz8+bZWxAdnvEwxZr/gLc3Cu/bGRaM0fzMs+Uhb0DqrDc7TaJhDCLnm7lL7qEeHpX2C30IknBR6CkcLmu5Dx8WhCc3vGw+vS9xSpVg0rDq4xnYBdwNETE8bXD1rcn3670vJbupEtmexQi9JW/ReGK0x9A/7NMZQlQ9R4Oz/DAhymSzGkH1wVFGU2hshnl5gc3fEHmSM0Y/JtMJvICR1xuLHrCENDMMJiKsktM4fT7lanAepI3TJjff/zVm+QcQ=
+  on:
+    tags: true
+    repo: limix/limix-plot
