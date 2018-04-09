@@ -10,8 +10,9 @@ def image(file, ax=None):
     ----------
     file : file-like object, string, or pathlib.Path
         The file to read.
-    ax : matplotlib axis, optional
-        If provided, plot on this axis.
+    ax : matplotlib Axes, optional
+        The target handle for this figure. If ``None``, the current axes is
+        set.
 
     Returns
     -------

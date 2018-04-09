@@ -15,6 +15,12 @@ Manhattan plot
 .. automodule:: limix_plot.manhattan
     :members:
 
+PCA plot
+--------
+
+.. automodule:: limix_plot.pca
+    :members:
+
 Plot an image
 -------------
 

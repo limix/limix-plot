@@ -19,8 +19,9 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
         select the number of clusters.
     img_kws : dict, optional
         Keyword arguments forwarded to the matplotlib pcolormesh function.
-    ax : matplotlib axis, optional
-        If provided, plot on this axis.
+    ax : matplotlib Axes, optional
+        The target handle for this figure. If ``None``, the current axes is
+        set.
 
     Returns
     -------

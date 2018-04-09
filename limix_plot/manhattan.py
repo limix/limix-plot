@@ -20,7 +20,14 @@ def manhattan(data, pv='pv', pos='pos', chr='chr', colora='#5689AC',
         Column name for the base-pair positions. Defaults to ``"pos"``.
     chr : str
         Column name for the chromosomes. Defaults to ``"chr"``.
-    ax : :class:`matplotlib.axes.Axes`:
+    colora : matplotlib color
+        Points color of the first group.
+    colorb : matplotlib color
+        Points color of the second group.
+    pts_kws : dict, optional
+        Keyword arguments forwarded to the matplotlib function used for
+        plotting the points.
+    ax : matplotlib Axes, optional
         The target handle for this figure. If ``None``, the current axes is
         set.
 

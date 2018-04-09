@@ -31,8 +31,9 @@ def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
     band_kws : dict, optional
         Keyword arguments forwarded to the fill_between function used for
         plotting the confidence band.
-    ax : matplotlib axis, optional
-        If provided, plot on this axis.
+    ax : matplotlib Axes, optional
+        The target handle for this figure. If ``None``, the current axes is
+        set.
 
     Returns
     -------
