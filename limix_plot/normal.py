@@ -32,7 +32,7 @@ def normal(x, bins=20, nstd=2, ax=None):
 
         >>> from numpy.random import RandomState
         >>> from matplotlib import pyplot as plt
-        >>> import lp
+        >>> import limix_plot as lp
         >>>
         >>> random = RandomState(10)
         >>> x = random.randn(100)

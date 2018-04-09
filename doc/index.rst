@@ -28,6 +28,11 @@ Plot an image
 
 .. autofunction:: limix_plot.image
 
+Power plot
+----------
+
+.. autofunction:: limix_plot.power
+
 Quantile-quantile plot
 ----------------------
 
