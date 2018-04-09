@@ -19,3 +19,4 @@ deploy:
   on:
     tags: true
     repo: limix/limix-plot
+    branch: master
