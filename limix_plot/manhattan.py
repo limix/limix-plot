@@ -38,8 +38,8 @@ def manhattan(data, pv='pv', pos='pos', chr='chr', colora='#5689AC',
 
     Examples
     --------
-    .. plot::
-        :include-source:
+    .. plot: :
+        : include-source:
 
         >>> from matplotlib import pyplot as plt
         >>> import limix_plot as lp
@@ -48,10 +48,8 @@ def manhattan(data, pv='pv', pos='pos', chr='chr', colora='#5689AC',
         >>>
         >>> df = read_pickle(lp.load_dataset('gwas'))
         >>> print(df.head())
-        >>> plt.figure(figsize=(16, 4))
         >>> lp.manhattan(df)
         >>> plt.axhline(-log10(1e-7), color='red')
-        >>> plt.tight_layout()
         >>> plt.show()
     """
     if not isinstance(data, pd.DataFrame):

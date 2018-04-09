@@ -6,32 +6,27 @@ Plotting library for genetics.
 Heatmap plot for kinship matrix
 -------------------------------
 
-.. automodule:: limix_plot.kinship
-    :members:
+.. autofunction:: limix_plot.kinship
 
 Manhattan plot
 --------------
 
-.. automodule:: limix_plot.manhattan
-    :members:
+.. autofunction:: limix_plot.manhattan
 
 PCA plot
 --------
 
-.. automodule:: limix_plot.pca
-    :members:
+.. autofunction:: limix_plot.pca
 
 Plot an image
 -------------
 
-.. automodule:: limix_plot.image
-    :members:
+.. autofunction:: limix_plot.image
 
 Quantile-quantile plot
 ----------------------
 
-.. automodule:: limix_plot.qqplot
-    :members:
+.. autofunction:: limix_plot.qqplot
 
 Comments and bugs
 -----------------
