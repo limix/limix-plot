@@ -2,6 +2,7 @@ import sys
 import io
 import bz2
 import numpy as np
+from pandas import read_pickle
 
 PY2 = sys.version_info < (3, )
 
@@ -21,9 +22,9 @@ def load_dataset(name):
         o = bz2.decompress(c)
         return io.BytesIO(o)
     elif name == 'gwas':
-        c = urlopen("http://rest.s3for.me/limix/mdd4.pkl.bz2").read()
+        c = urlopen("http://rest.s3for.me/limix/mdd_small.pkl.bz2").read()
         o = bz2.decompress(c)
-        return io.BytesIO(o)
+        return read_pickle(io.BytesIO(o))
 
     raise ValueError("Unknown dataset {}.".format(name))
 

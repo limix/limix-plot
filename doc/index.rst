@@ -3,6 +3,12 @@ Limix-plot's documentation
 
 Plotting library for genetics.
 
+Consensus curve
+---------------
+
+.. autoclass:: limix_plot.ConsensusCurve
+    :members:
+
 Heatmap plot for kinship matrix
 -------------------------------
 
