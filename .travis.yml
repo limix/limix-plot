@@ -1,0 +1,13 @@
+language: python
+sudo: required
+python: 3.6
+env:
+- PKG_NAME=limix_plot
+script:
+- bash <(curl -fsSL https://raw.githubusercontent.com/horta/ci/master/travis.sh)
+notifications:
+  email:
+    recipients:
+    - danilo.horta@gmail.com
+    on_success: never
+    on_failure: always
