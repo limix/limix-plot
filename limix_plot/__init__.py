@@ -9,8 +9,9 @@ from .dataset import load_dataset
 from .image import image
 from .manhattan import manhattan
 from .pca import pca
+from .normal import normal
 
 __version__ = '0.0.1'
 
 __all__ = ['__version__', 'qqplot', 'box_aspect', 'load_dataset', 'test',
-           'kinship', 'image', 'manhattan', 'pca']
+           'kinship', 'image', 'manhattan', 'pca', 'normal']

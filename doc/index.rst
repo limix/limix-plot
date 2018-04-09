@@ -13,6 +13,11 @@ Manhattan plot
 
 .. autofunction:: limix_plot.manhattan
 
+Normal plot
+-----------
+
+.. autofunction:: limix_plot.normal
+
 PCA plot
 --------
 
