@@ -2,7 +2,7 @@ from __future__ import division
 
 import pandas as pd
 from matplotlib import pyplot as plt
-from numpy import asarray, cumsum, flipud, log10, unique
+from numpy import asarray, cumsum, flipud, log10, unique, mean
 
 
 def manhattan(data, pv='pv', pos='pos', chr='chr', colora='#5689AC',
@@ -55,6 +55,9 @@ def manhattan(data, pv='pv', pos='pos', chr='chr', colora='#5689AC',
     """
     if not isinstance(data, pd.DataFrame):
         data = pd.DataFrame(data=data)
+
+    if len(data) == 0:
+        raise ValueError("DataFrame is empty.")
 
     if pts_kws is None:
         pts_kws = dict()
@@ -111,23 +114,9 @@ def _plot_points(ax, df, alpha, null_style, alt_style):
     ax.plot(alt_df['abs_pos'], -log10(alt_df['pv']), '.', ms=7, **alt_style)
 
 
-def _plot_chrom_strips(ax, df, ytop):
-    order = df['order'].unique()
-    for i in range(0, len(order), 2):
-        ax.fill_between(
-            df['abs_pos'],
-            0,
-            ytop,
-            where=df['order'] == order[i],
-            facecolor='black',
-            edgecolor='black',
-            linewidth=0,
-            alpha=0.1)
-
-
 def _set_ticks(ax, chrom_bounds, chrom_labels):
-    n = len(chrom_bounds) - 1
-    xticks = asarray([chrom_bounds[i:i + 2].mean() for i in range(n)])
+    n = len(chrom_bounds)
+    xticks = asarray([mean(chrom_bounds[i]) for i in range(n)])
     ax.set_xticks(xticks)
     ax.set_xticklabels(chrom_labels)
 
@@ -150,8 +139,11 @@ def _abs_pos(df):
 
 def _chrom_bounds(df):
     order = df['order'].unique()
-    v = [df['abs_pos'][df['order'] == c].min() for c in order]
-    return asarray(v + [df['abs_pos'].max()])
+    v = []
+    for c in order:
+        vals = df['abs_pos'][df['order'] == c]
+        v += [(vals.min(), vals.max())]
+    return v
 
 
 def _isint(i):
@@ -166,8 +158,12 @@ def _isint(i):
 def _chr_precedence(df):
     uchr = unique(df['chr'].values)
     nchr = [int(i) for i in uchr if _isint(i)]
+    if len(nchr) > 0:
+        offset = max(nchr)
+    else:
+        offset = -1
     precedence = {str(i): i for i in nchr}
     schr = sorted([i for i in uchr if not _isint(i)])
     for i, s in enumerate(schr):
-        precedence[s] = max(nchr) + i + 1
+        precedence[s] = offset + i + 1
     return precedence

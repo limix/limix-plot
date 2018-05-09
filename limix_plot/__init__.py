@@ -13,7 +13,7 @@ from .normal import normal
 from .power import power
 from .consensus import ConsensusCurve
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 __all__ = ['__version__', 'qqplot', 'box_aspect', 'load_dataset', 'test',
            'kinship', 'image', 'manhattan', 'pca', 'normal', 'power',
