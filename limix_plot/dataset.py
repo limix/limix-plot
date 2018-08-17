@@ -1,8 +1,8 @@
 import io
 import sys
+from bz2 import decompress
 
-import numpy as np
-
+from numpy import load
 
 PY2 = sys.version_info < (3,)
 
@@ -24,20 +24,20 @@ def load_dataset(name):
     -------
     Numpy array, BytesIO, DataFrame : Selected dataset.
     """
-    import bz2
+
     from pandas import read_pickle
 
     if name == "kinship":
         c = urlopen("http://rest.s3for.me/limix/1000G_kinship.npy").read()
         f = io.BytesIO(c)
-        return np.load(f)
+        return load(f)
     elif name == "dali":
         c = urlopen("http://rest.s3for.me/limix/dali.jpg.bz2").read()
-        o = bz2.decompress(c)
+        o = decompress(c)
         return io.BytesIO(o)
     elif name == "gwas":
         c = urlopen("http://rest.s3for.me/limix/mdd_small.pkl.bz2").read()
-        o = bz2.decompress(c)
+        o = decompress(c)
         return read_pickle(io.BytesIO(o))
 
     raise ValueError("Unknown dataset {}.".format(name))
