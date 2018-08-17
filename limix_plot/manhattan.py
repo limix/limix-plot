@@ -47,10 +47,11 @@ def manhattan(
     --------
     .. nbplot::
 
-        >>> from matplotlib import pyplot as plt
+        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>> from numpy import log10
         >>>
+        >>> plt = get_pyplot()
         >>> df = lp.load_dataset('gwas')
         >>> print(df.head())
             chr     pos        pv

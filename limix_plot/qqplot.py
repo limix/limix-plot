@@ -61,10 +61,11 @@ def qqplot(
     --------
     .. nbplot::
 
-        >>> import matplotlib.pyplot as plt
+        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>> from numpy.random import RandomState
         >>>
+        >>> plt = get_pyplot()
         >>> random = RandomState(1)
         >>>
         >>> pv0 = random.rand(10000)

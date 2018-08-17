@@ -22,9 +22,10 @@ def image(file, ax=None):
     --------
     .. nbplot::
 
+        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
-        >>> from matplotlib import pyplot as plt
         >>>
+        >>> plt = get_pyplot()
         >>> file = lp.load_dataset("dali")
         >>> lp.image(file)  # doctest: +SKIP
         >>> plt.show()  # doctest: +SKIP

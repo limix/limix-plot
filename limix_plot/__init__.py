@@ -2,6 +2,8 @@ r"""Plotting library for genetics."""
 
 from __future__ import absolute_import
 
+from ._plt import get_pyplot
+from ._testit import test
 from .consensus import ConsensusCurve
 from .dataset import load_dataset
 from .image import image
@@ -12,14 +14,14 @@ from .normal import normal
 from .pca import pca
 from .power import power
 from .qqplot import qqplot
-from ._testit import test
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 __all__ = [
     "__version__",
     "box_aspect",
     "ConsensusCurve",
+    "get_pyplot",
     "image",
     "kinship",
     "load_dataset",

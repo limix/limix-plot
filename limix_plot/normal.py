@@ -27,9 +27,10 @@ def normal(x, bins=20, nstd=2, ax=None):
     .. nbplot::
 
         >>> from numpy.random import RandomState
-        >>> from matplotlib import pyplot as plt
+        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>>
+        >>> plt = get_pyplot()
         >>> random = RandomState(10)
         >>> x = random.randn(100)
         >>> lp.normal(x)  # doctest: +SKIP

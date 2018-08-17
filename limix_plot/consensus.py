@@ -10,12 +10,13 @@ class ConsensusCurve(object):
     --------
     .. nbplot::
 
-        >>> from matplotlib import pyplot as plt
+        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>> from numpy import sort
         >>> from numpy.random import RandomState
         >>>
         >>> random = RandomState(1)
+        >>> plt = get_pyplot()
         >>>
         >>> n0 = 30
         >>> x0 = sort(random.rand(n0))

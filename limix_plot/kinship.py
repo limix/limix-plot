@@ -32,9 +32,10 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
     --------
     .. nbplot::
 
+        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
-        >>> from matplotlib import pyplot as plt
         >>>
+        >>> plt = get_pyplot()
         >>> K = lp.load_dataset("kinship")
         >>> lp.kinship(K)  # doctest: +SKIP
         >>> plt.show()  # doctest: +SKIP

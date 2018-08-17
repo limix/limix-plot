@@ -27,9 +27,10 @@ def pca(X, pts_kws=None, ax=None):
     .. nbplot::
 
         >>> import limix_plot as lp
-        >>> from matplotlib import pyplot as plt
+        >>> from limix_plot import get_pyplot
         >>> from numpy.random import RandomState
         >>>
+        >>> plt = get_pyplot()
         >>> random = RandomState(0)
         >>> X = random.randn(30, 10)
         >>> lp.pca(X)  # doctest: +SKIP
