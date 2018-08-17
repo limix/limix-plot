@@ -1,10 +1,10 @@
-import sys
 import io
-import bz2
-import numpy as np
-from pandas import read_pickle
+import sys
 
-PY2 = sys.version_info < (3, )
+import numpy as np
+
+
+PY2 = sys.version_info < (3,)
 
 if PY2:
     from urllib import urlopen
@@ -24,15 +24,18 @@ def load_dataset(name):
     -------
     Numpy array, BytesIO, DataFrame : Selected dataset.
     """
-    if name == 'kinship':
+    import bz2
+    from pandas import read_pickle
+
+    if name == "kinship":
         c = urlopen("http://rest.s3for.me/limix/1000G_kinship.npy").read()
         f = io.BytesIO(c)
         return np.load(f)
-    elif name == 'dali':
+    elif name == "dali":
         c = urlopen("http://rest.s3for.me/limix/dali.jpg.bz2").read()
         o = bz2.decompress(c)
         return io.BytesIO(o)
-    elif name == 'gwas':
+    elif name == "gwas":
         c = urlopen("http://rest.s3for.me/limix/mdd_small.pkl.bz2").read()
         o = bz2.decompress(c)
         return read_pickle(io.BytesIO(o))

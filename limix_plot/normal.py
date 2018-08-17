@@ -1,8 +1,4 @@
-import matplotlib.pyplot as plt
-import scipy.stats as st
-from numpy import arange, asarray
-from numpy import mean as _mean
-from numpy import std as _std
+from numpy import arange, asarray, mean as _mean, std as _std
 
 
 def normal(x, bins=20, nstd=2, ax=None):
@@ -27,8 +23,7 @@ def normal(x, bins=20, nstd=2, ax=None):
 
     Examples
     --------
-    .. plot::
-        :include-source:
+    .. nbplot::
 
         >>> from numpy.random import RandomState
         >>> from matplotlib import pyplot as plt
@@ -36,9 +31,11 @@ def normal(x, bins=20, nstd=2, ax=None):
         >>>
         >>> random = RandomState(10)
         >>> x = random.randn(100)
-        >>> lp.normal(x)
-        >>> plt.show()
+        >>> lp.normal(x)  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
     """
+    import matplotlib.pyplot as plt
+    import scipy.stats as st
 
     x = asarray(x).ravel()
 
@@ -52,24 +49,27 @@ def normal(x, bins=20, nstd=2, ax=None):
 
     ax.hist(x, bins, density=True)
 
-    ax.plot(xvals, yvals, color='red')
+    ax.plot(xvals, yvals, color="red")
 
-    _draw_normal(ax, mean_x, std_x, nstd, 'red')
+    _draw_normal(ax, mean_x, std_x, nstd, "red")
 
     return ax
 
 
 def _draw_normal(axis, mean, scale, nstd, color):
+    import scipy.stats as st
+
     max_pdf = st.norm.pdf(mean, mean, scale)
 
     axis.plot([mean, mean], [0, max_pdf], color=color, linestyle="--")
 
     axis.annotate(
-        '$\mu$',
+        "$\mu$",
         xy=(mean + 0.6 * scale, max_pdf),
-        horizontalalignment='center',
-        verticalalignment='bottom',
-        color=color)
+        horizontalalignment="center",
+        verticalalignment="bottom",
+        color=color,
+    )
 
     top = st.norm.pdf(mean + nstd * scale, mean, scale)
     left = mean - nstd * scale
@@ -80,13 +80,14 @@ def _draw_normal(axis, mean, scale, nstd, color):
     axis.plot([left, left], [0, top], color=color, linestyle="--")
 
     if int(nstd) == nstd:
-        mu_sigma = '$\mu+%d\sigma$' % nstd
+        mu_sigma = "$\mu+%d\sigma$" % nstd
     else:
-        mu_sigma = '$\mu+%.1f\sigma$' % nstd
+        mu_sigma = "$\mu+%.1f\sigma$" % nstd
 
     axis.annotate(
         mu_sigma,
         xy=(mean + (1.2 + nstd) * scale, top),
-        horizontalalignment='center',
-        verticalalignment='bottom',
-        color=color)
+        horizontalalignment="center",
+        verticalalignment="bottom",
+        color=color,
+    )

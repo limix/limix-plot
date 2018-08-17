@@ -1,8 +1,6 @@
 from __future__ import division
 
 from numpy import asarray
-import matplotlib.pyplot as plt
-from sklearn import decomposition
 
 
 def pca(X, pts_kws=None, ax=None):
@@ -25,8 +23,7 @@ def pca(X, pts_kws=None, ax=None):
 
     Example
     -------
-    .. plot::
-        :include-source:
+    .. nbplot::
 
         >>> import limix_plot as lp
         >>> from matplotlib import pyplot as plt
@@ -34,21 +31,23 @@ def pca(X, pts_kws=None, ax=None):
         >>>
         >>> random = RandomState(0)
         >>> X = random.randn(30, 10)
-        >>> lp.pca(X)
-        >>> plt.show()
+        >>> lp.pca(X)  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
     """
+    import matplotlib.pyplot as plt
+    from sklearn import decomposition
 
     ax = plt.gca() if ax is None else ax
 
     if pts_kws is None:
         pts_kws = dict()
 
-    if 'marker' not in pts_kws:
-        pts_kws['marker'] = 'o'
-    if 'linestyle' not in pts_kws:
-        pts_kws['linestyle'] = ''
-    if 'markersize' not in pts_kws:
-        pts_kws['markersize'] = 4
+    if "marker" not in pts_kws:
+        pts_kws["marker"] = "o"
+    if "linestyle" not in pts_kws:
+        pts_kws["linestyle"] = ""
+    if "markersize" not in pts_kws:
+        pts_kws["markersize"] = 4
 
     X = asarray(X, float)
 
@@ -58,7 +57,7 @@ def pca(X, pts_kws=None, ax=None):
 
     ax.plot(X[:, 0], X[:, 1], **pts_kws)
 
-    ax.set_xlabel('first component')
-    ax.set_ylabel('second component')
+    ax.set_xlabel("first component")
+    ax.set_ylabel("second component")
 
     return ax

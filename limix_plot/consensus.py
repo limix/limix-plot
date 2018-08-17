@@ -8,8 +8,7 @@ class ConsensusCurve(object):
 
     Examples
     --------
-    .. plot::
-        :include-source:
+    .. nbplot::
 
         >>> from matplotlib import pyplot as plt
         >>> import limix_plot as lp
@@ -31,12 +30,12 @@ class ConsensusCurve(object):
         >>> cc.add(x1, y1)
         >>>
         >>> (x, ybottom, y, ytop) = cc.consensus()
-        >>> plt.plot(x, y)
         >>> ax = plt.gca()
-        >>> ax.fill_between(x, ybottom, ytop, lw=0, edgecolor='None',
-        ...                 facecolor='blue', alpha=0.25, interpolate=True)
+        >>> plt.plot(x, y)  # doctest: +SKIP
+        >>> ax.fill_between(x, ybottom, ytop, lw=0, edgecolor='None', facecolor='blue', 
+        ...                 alpha=0.25, interpolate=True)  # doctest: +SKIP
         >>>
-        >>> plt.show()
+        >>> plt.show()  # doctest: +SKIP
     """
 
     def __init__(self):
@@ -102,10 +101,10 @@ def _consensus_curve(x, y, std_dev=3.0):
     ny = ones((len(y), n))
 
     for i, xi in enumerate(x):
-        nx[i, :len(xi)] = xi
+        nx[i, : len(xi)] = xi
 
     for i, yi in enumerate(y):
-        ny[i, :len(yi)] = yi
+        ny[i, : len(yi)] = yi
 
     x = nx
     y = ny

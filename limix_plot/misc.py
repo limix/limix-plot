@@ -1,5 +1,4 @@
 from numpy import inf
-from matplotlib import pyplot as plt
 
 
 def box_aspect(ax=None):
@@ -13,6 +12,8 @@ def box_aspect(ax=None):
     ax : matplotlib Axes
         Returns the Axes object with the plot for further tweaking.
     """
+    from matplotlib import pyplot as plt
+
     if ax is None:
         ax = plt.gca()
 
@@ -31,7 +32,7 @@ def box_aspect(ax=None):
     ax.set_xlim(mi, ma)
     ax.set_ylim(mi, ma)
 
-    ax.set_aspect('equal', 'box')
+    ax.set_aspect("equal", "box")
     ax.apply_aspect()
 
     ticks = ax.get_yticks()

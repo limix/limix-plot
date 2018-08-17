@@ -1,6 +1,5 @@
 from __future__ import division
 
-import matplotlib.pyplot as plt
 from numpy import asarray, linspace
 
 
@@ -30,8 +29,7 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
 
     Examples
     --------
-    .. plot::
-        :include-source:
+    .. nbplot::
 
         >>> from matplotlib import pyplot as plt
         >>> import limix_plot as lp
@@ -43,11 +41,12 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
         >>> pv0 = list(random.rand(nsnps))
         >>> pv1 = list(0.7 * random.rand(nsnps))
         >>>
-        >>> lp.power(pv0, label='label0')
+        >>> lp.power(pv0, label='label0')  # doctest: +SKIP
         >>> ax = lp.power(pv1, label='label1')
-        >>> ax.legend(loc='best')
-        >>> plt.show()
+        >>> ax.legend(loc='best')  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
     """
+    import matplotlib.pyplot as plt
 
     pv = asarray(pv).ravel()
 
@@ -58,14 +57,14 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
 
     if pts_kws is None:
         pts_kws = dict()
-    if 'label' not in pts_kws:
-        pts_kws['label'] = label
+    if "label" not in pts_kws:
+        pts_kws["label"] = label
 
     nhits = _collect_nhits(pv, alphas)
     ax.plot(alphas, asarray(nhits, int), **pts_kws)
 
-    ax.set_xlabel('significance level')
-    ax.set_ylabel('number of hits')
+    ax.set_xlabel("significance level")
+    ax.set_ylabel("number of hits")
 
     return ax
 

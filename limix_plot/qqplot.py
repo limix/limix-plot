@@ -1,15 +1,31 @@
 from __future__ import division
 
-from numpy import (arange, ascontiguousarray, flipud, linspace, log10, ones,
-                   percentile, searchsorted, sort, asarray)
+from numpy import (
+    arange,
+    ascontiguousarray,
+    flipud,
+    linspace,
+    log10,
+    ones,
+    percentile,
+    searchsorted,
+    sort,
+    asarray,
+)
 from numpy import sum as npsum
 from numpy import where
-from scipy.special import betaincinv
-import matplotlib.pyplot as plt
 
 
-def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
-           band_kws=None, ax=None):
+def qqplot(
+    a,
+    label=None,
+    alpha=0.05,
+    cutoff=0.1,
+    line=True,
+    pts_kws=None,
+    band_kws=None,
+    ax=None,
+):
     r"""Quantile-Quantile plot of observed p-values versus theoretical ones.
 
     Parameters
@@ -42,8 +58,7 @@ def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
 
     Examples
     --------
-    .. plot::
-        :include-source:
+    .. nbplot::
 
         >>> import matplotlib.pyplot as plt
         >>> import limix_plot as lp
@@ -57,26 +72,27 @@ def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
         >>> pv1 = random.rand(10000)
         >>> pv2 = random.rand(10000)
         >>>
-        >>> lp.qqplot(pv0)
-        >>> plt.show()
+        >>> lp.qqplot(pv0)  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
 
-        >>> lp.qqplot(pv0)
-        >>> lp.qqplot(pv1, line=False, alpha=None)
-        >>> plt.show()
+        >>> lp.qqplot(pv0)  # doctest: +SKIP
+        >>> lp.qqplot(pv1, line=False, alpha=None)  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
 
-        >>> lp.qqplot(pv1)
-        >>> lp.qqplot(pv2, line=False, alpha=None)
-        >>> lp.box_aspect()
-        >>> plt.show()
+        >>> lp.qqplot(pv1)  # doctest: +SKIP
+        >>> lp.qqplot(pv2, line=False, alpha=None)  # doctest: +SKIP
+        >>> lp.box_aspect()  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
 
         >>> lp.qqplot(pv0, label='label0', band_kws=dict(color='#EE0000',
-        ...                                              alpha=0.2))
-        >>> lp.qqplot(pv1, label='label1', line=False, alpha=None)
+        ...                                              alpha=0.2))  # doctest: +SKIP
+        >>> lp.qqplot(pv1, label='label1', line=False, alpha=None)  # doctest: +SKIP
         >>> ax = lp.qqplot(pv2, label='label2', line=False,
-        ...                alpha=None, pts_kws=dict(marker='*'))
-        >>> ax.legend()
-        >>> plt.show()
+        ...                alpha=None, pts_kws=dict(marker='*'))  # doctest: +SKIP
+        >>> ax.legend()  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
     """
+    import matplotlib.pyplot as plt
 
     a = asarray(a)
     if a.ndim > 1:
@@ -87,25 +103,25 @@ def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
 
     if pts_kws is None:
         pts_kws = dict()
-    if 'marker' not in pts_kws:
-        pts_kws['marker'] = 'o'
-    if 'linestyle' not in pts_kws:
-        pts_kws['linestyle'] = ''
-    if 'markeredgecolor' not in pts_kws:
-        pts_kws['markeredgecolor'] = None
+    if "marker" not in pts_kws:
+        pts_kws["marker"] = "o"
+    if "linestyle" not in pts_kws:
+        pts_kws["linestyle"] = ""
+    if "markeredgecolor" not in pts_kws:
+        pts_kws["markeredgecolor"] = None
     if label is not None:
-        pts_kws['label'] = label
+        pts_kws["label"] = label
 
     if band_kws is None:
         band_kws = dict()
-    if 'facecolor' not in band_kws:
-        band_kws['facecolor'] = '#DDDDDD'
-    if 'linewidth' not in band_kws:
-        band_kws['linewidth'] = 0
-    if 'zorder' not in band_kws:
-        band_kws['zorder'] = -1
-    if 'alpha' not in band_kws:
-        band_kws['alpha'] = 1.0
+    if "facecolor" not in band_kws:
+        band_kws["facecolor"] = "#DDDDDD"
+    if "linewidth" not in band_kws:
+        band_kws["linewidth"] = 0
+    if "zorder" not in band_kws:
+        band_kws["zorder"] = -1
+    if "alpha" not in band_kws:
+        band_kws["alpha"] = 1.0
 
     pv = sort(a)
     ok = _subsample(pv, cutoff)
@@ -121,16 +137,16 @@ def qqplot(a, label=None, alpha=0.05, cutoff=0.1, line=True, pts_kws=None,
     xmax = qnull[ok].max()
 
     if line:
-        ax.plot([xmin, xmax], [xmin, xmax], color='black', zorder=0)
+        ax.plot([xmin, xmax], [xmin, xmax], color="black", zorder=0)
 
     if alpha is not None:
         _plot_confidence_band(ok, qnull, alpha, ax, qmax, band_kws)
 
-    ax.set_ylabel('-log$_{10}$pv observed')
-    ax.set_xlabel('-log$_{10}$pv expected')
+    ax.set_ylabel("-log$_{10}$pv observed")
+    ax.set_xlabel("-log$_{10}$pv expected")
 
-    ax.xaxis.set_ticks_position('both')
-    ax.yaxis.set_ticks_position('both')
+    ax.xaxis.set_ticks_position("both")
+    ax.yaxis.set_ticks_position("both")
 
     return ax
 
@@ -141,6 +157,8 @@ def _expected(n):
 
 
 def _rank_confidence_band(nranks, significance_level, ok):
+    from scipy.special import betaincinv
+
     alpha = significance_level
 
     k0 = arange(1, nranks + 1)
@@ -155,8 +173,7 @@ def _rank_confidence_band(nranks, significance_level, ok):
     return (bottom, top)
 
 
-def _plot_confidence_band(ok, null_qvals, significance_level, ax, qmax,
-                          band_kws):
+def _plot_confidence_band(ok, null_qvals, significance_level, ax, qmax, band_kws):
 
     (bo, to) = _rank_confidence_band(len(null_qvals), significance_level, ok)
 
@@ -186,7 +203,7 @@ def _subsample(pvalues, cutoff):
     resolution = min(snok, resolution)
 
     qv_chosen = linspace(qv_min, qv_max, resolution)
-    pv_chosen = 10**(-qv_chosen)
+    pv_chosen = 10 ** (-qv_chosen)
 
     idx = searchsorted(pvalues[nok], pv_chosen)
     n = sum(nok)

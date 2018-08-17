@@ -2,7 +2,6 @@ from __future__ import division
 
 import warnings
 from numpy import argsort, asarray, clip, inf, percentile
-import matplotlib.pyplot as plt
 
 
 def kinship(K, nclusters=1, img_kws=None, ax=None):
@@ -30,26 +29,26 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
 
     Examples
     --------
-    .. plot::
-        :include-source:
+    .. nbplot::
 
         >>> import limix_plot as lp
         >>> from matplotlib import pyplot as plt
         >>>
         >>> K = lp.load_dataset("kinship")
-        >>> lp.kinship(K)
-        >>> plt.show()
+        >>> lp.kinship(K)  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
     """
+    import matplotlib.pyplot as plt
 
     ax = plt.gca() if ax is None else ax
 
     if img_kws is None:
         img_kws = dict()
-    if 'cmap' not in img_kws:
-        img_kws['cmap'] = 'RdBu_r'
+    if "cmap" not in img_kws:
+        img_kws["cmap"] = "RdBu_r"
 
     K = asarray(K, float)
-    if nclusters == 'auto':
+    if nclusters == "auto":
         K = _infer_clustering(K)
     elif nclusters > 1:
         K = _clustering(K, nclusters)
@@ -80,7 +79,7 @@ def _infer_clustering(K):
         labels = _cluster(K, nclusters)
         # idx = argsort(labels)
 
-        s = silhouette_score(K, labels, metric='correlation')
+        s = silhouette_score(K, labels, metric="correlation")
         scores.append(s)
 
     smallest = inf

@@ -1,6 +1,4 @@
-import matplotlib.pyplot as plt
-import imghdr
-from numpy.compat import (basestring, is_pathlib_path)
+from numpy.compat import basestring, is_pathlib_path
 
 
 def image(file, ax=None):
@@ -21,17 +19,19 @@ def image(file, ax=None):
 
     Examples
     --------
-    .. plot::
-        :include-source:
+    .. nbplot::
 
         >>> import limix_plot as lp
         >>> from matplotlib import pyplot as plt
         >>>
         >>> file = lp.load_dataset("dali")
-        >>> lp.image(file)
-        >>> plt.show()
+        >>> lp.image(file)  # doctest: +SKIP
+        >>> plt.show()  # doctest: +SKIP
         >>> file.close()
     """
+    import matplotlib.pyplot as plt
+    import imghdr
+
     ax = plt.gca() if ax is None else ax
 
     own_fid = False
