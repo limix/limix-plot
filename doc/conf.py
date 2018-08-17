@@ -38,7 +38,7 @@ version = get_version()
 release = version
 language = None
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "conf.py"]
-pygments_style = "sphinx"
+pygments_style = "default"
 todo_include_todos = False
 
 html_theme = "sphinx_rtd_theme"
