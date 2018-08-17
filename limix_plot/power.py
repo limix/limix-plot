@@ -1,6 +1,7 @@
 from __future__ import division
 
 from numpy import asarray, linspace
+from ._plt import get_pyplot
 
 
 def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
@@ -46,7 +47,7 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
         >>> ax.legend(loc='best')  # doctest: +SKIP
         >>> plt.show()  # doctest: +SKIP
     """
-    import matplotlib.pyplot as plt
+    plt = get_pyplot()
 
     pv = asarray(pv).ravel()
 

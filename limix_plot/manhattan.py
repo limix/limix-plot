@@ -1,6 +1,7 @@
 from __future__ import division
 
 from numpy import asarray, cumsum, flipud, log10, mean, unique
+from ._plt import get_pyplot
 
 
 def manhattan(
@@ -65,7 +66,8 @@ def manhattan(
         >>> plt.show()  # doctest: +SKIP
     """
     import pandas as pd
-    from matplotlib import pyplot as plt
+
+    plt = get_pyplot()
 
     if not isinstance(data, pd.DataFrame):
         data = pd.DataFrame(data=data)

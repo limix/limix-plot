@@ -2,6 +2,7 @@ from __future__ import division
 
 import warnings
 from numpy import argsort, asarray, clip, inf, percentile
+from ._plt import get_pyplot
 
 
 def kinship(K, nclusters=1, img_kws=None, ax=None):
@@ -38,7 +39,7 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
         >>> lp.kinship(K)  # doctest: +SKIP
         >>> plt.show()  # doctest: +SKIP
     """
-    import matplotlib.pyplot as plt
+    plt = get_pyplot()
 
     ax = plt.gca() if ax is None else ax
 

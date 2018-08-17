@@ -1,4 +1,5 @@
 from numpy import arange, asarray, mean as _mean, std as _std
+from ._plt import get_pyplot
 
 
 def normal(x, bins=20, nstd=2, ax=None):
@@ -34,8 +35,9 @@ def normal(x, bins=20, nstd=2, ax=None):
         >>> lp.normal(x)  # doctest: +SKIP
         >>> plt.show()  # doctest: +SKIP
     """
-    import matplotlib.pyplot as plt
     import scipy.stats as st
+
+    plt = get_pyplot()
 
     x = asarray(x).ravel()
 

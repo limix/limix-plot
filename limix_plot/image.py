@@ -1,4 +1,5 @@
 from numpy.compat import basestring, is_pathlib_path
+from ._plt import get_pyplot
 
 
 def image(file, ax=None):
@@ -29,8 +30,9 @@ def image(file, ax=None):
         >>> plt.show()  # doctest: +SKIP
         >>> file.close()
     """
-    import matplotlib.pyplot as plt
     import imghdr
+
+    plt = get_pyplot()
 
     ax = plt.gca() if ax is None else ax
 

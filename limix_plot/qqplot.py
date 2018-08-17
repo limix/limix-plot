@@ -14,6 +14,7 @@ from numpy import (
 )
 from numpy import sum as npsum
 from numpy import where
+from ._plt import get_pyplot
 
 
 def qqplot(
@@ -92,7 +93,7 @@ def qqplot(
         >>> ax.legend()  # doctest: +SKIP
         >>> plt.show()  # doctest: +SKIP
     """
-    import matplotlib.pyplot as plt
+    plt = get_pyplot()
 
     a = asarray(a)
     if a.ndim > 1:
