@@ -11,6 +11,7 @@ from numpy import (
     searchsorted,
     sort,
     asarray,
+    median,
 )
 from numpy import sum as npsum
 from numpy import where
@@ -26,6 +27,7 @@ def qqplot(
     pts_kws=None,
     band_kws=None,
     ax=None,
+    show_lambda=True,
 ):
     r"""Quantile-Quantile plot of observed p-values versus theoretical ones.
 
@@ -144,6 +146,10 @@ def qqplot(
     if alpha is not None:
         _plot_confidence_band(ok, qnull, alpha, ax, qmax, band_kws)
 
+    if show_lambda:
+        _plot_lambda(pv, ax)
+        _adjust_lambda_texts(ax)
+
     ax.set_ylabel("-log$_{10}$pv observed")
     ax.set_xlabel("-log$_{10}$pv expected")
 
@@ -151,6 +157,41 @@ def qqplot(
     ax.yaxis.set_ticks_position("both")
 
     return ax
+
+
+def _plot_lambda(pv, ax):
+    import scipy.stats as st
+
+    chi2 = st.chi2(df=1)
+    lamb = median(chi2.isf(pv)) / chi2.median()
+    text = "$\lambda={:.3f}$".format(lamb)
+    ax.text(
+        0.40,
+        0.75,
+        text,
+        horizontalalignment="center",
+        verticalalignment="center",
+        transform=ax.transAxes,
+    )
+
+
+def _adjust_lambda_texts(ax):
+    from adjustText import adjust_text
+
+    texts = []
+    for t in ax.texts:
+
+        if "$\\lambda" in t.get_text():
+            texts.append(t)
+        print(t.get_text())
+    if len(texts) > 1:
+        y = texts[0].get_position()[1]
+        for (i, t) in enumerate(texts[1:]):
+            xy = t.get_position()
+            t.set_position((xy[0], y - (i + 1) * 0.05))
+        adjust_text(
+            texts, autoalign="y", only_move={"text": "y"}, text_from_points=False
+        )
 
 
 def _expected(n):
