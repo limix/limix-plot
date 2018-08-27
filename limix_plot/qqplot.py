@@ -183,7 +183,7 @@ def _adjust_lambda_texts(ax):
 
         if "$\\lambda" in t.get_text():
             texts.append(t)
-        print(t.get_text())
+
     if len(texts) > 1:
         y = texts[0].get_position()[1]
         for (i, t) in enumerate(texts[1:]):
