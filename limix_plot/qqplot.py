@@ -163,7 +163,7 @@ def _plot_lambda(pv, ax):
     import scipy.stats as st
 
     chi2 = st.chi2(df=1)
-    lamb = median(chi2.isf(pv)) / chi2.median()
+    lamb = chi2.isf(median(pv)) / chi2.median()
     text = "$\lambda={:.3f}$".format(lamb)
     ax.text(
         0.40,
