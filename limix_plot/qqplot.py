@@ -210,7 +210,7 @@ def _rank_confidence_band(nranks, significance_level, ok):
     k0 = ascontiguousarray(k0[ok])
     k1 = ascontiguousarray(k1[ok])
 
-    my_ok = k1 / k0 > 1e-4
+    my_ok = k1 / k0 / (k1[0]/k0[0]) > 1e-4
     k0 = ascontiguousarray(k0[my_ok])
     k1 = ascontiguousarray(k1[my_ok])
 
