@@ -210,20 +210,24 @@ def _rank_confidence_band(nranks, significance_level, ok):
     k0 = ascontiguousarray(k0[ok])
     k1 = ascontiguousarray(k1[ok])
 
+    my_ok = k1 / k0 > 1e-4
+    k0 = ascontiguousarray(k0[my_ok])
+    k1 = ascontiguousarray(k1[my_ok])
+
     top = betaincinv(k0, k1, 1 - alpha)
     bottom = betaincinv(k0, k1, alpha)
 
-    return (bottom, top)
+    return (my_ok, bottom, top)
 
 
 def _plot_confidence_band(ok, null_qvals, significance_level, ax, qmax, band_kws):
 
-    (bo, to) = _rank_confidence_band(len(null_qvals), significance_level, ok)
+    (cb_ok, bo, to) = _rank_confidence_band(len(null_qvals), significance_level, ok)
 
     bo = -log10(bo)
     to = -log10(to)
 
-    m = null_qvals[ok]
+    m = null_qvals[ok][cb_ok]
 
     ax.fill_between(m, bo, to, **band_kws)
 
