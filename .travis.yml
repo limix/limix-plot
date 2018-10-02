@@ -1,7 +1,6 @@
 language: python
 sudo: required
 python:
-- 2.7
 - 3.6
 env:
 - PKG_NAME=limix_plot
