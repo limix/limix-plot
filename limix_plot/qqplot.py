@@ -46,7 +46,7 @@ def qqplot(
 
     Examples
     --------
-    .. nbplot::
+    .. plot::
 
         >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp

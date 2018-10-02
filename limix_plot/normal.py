@@ -23,7 +23,7 @@ def normal(x, bins=20, nstd=2, ax=None):
 
     Examples
     --------
-    .. nbplot::
+    .. plot::
 
         >>> from numpy.random import RandomState
         >>> from limix_plot import get_pyplot

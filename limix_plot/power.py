@@ -29,7 +29,7 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
 
     Examples
     --------
-    .. nbplot::
+    .. plot::
 
         >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp

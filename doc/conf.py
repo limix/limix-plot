@@ -22,9 +22,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
-    "matplotlib.sphinxext.only_directives",
     "matplotlib.sphinxext.plot_directive",
-    "nb2plots",
 ]
 
 templates_path = ["_templates"]

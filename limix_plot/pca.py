@@ -23,7 +23,7 @@ def pca(X, pts_kws=None, ax=None):
 
     Example
     -------
-    .. nbplot::
+    .. plot::
 
         >>> import limix_plot as lp
         >>> from limix_plot import get_pyplot

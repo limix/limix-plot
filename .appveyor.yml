@@ -7,5 +7,5 @@ environment:
     PKG_NAME: limix_plot
     PYTHON: "C:\\Python36-x64"
 
-install:
+build_script:
     - powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/horta/ci/master/appveyor.bat', 'appveyor.bat')" && appveyor.bat

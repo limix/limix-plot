@@ -29,7 +29,7 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
 
     Examples
     --------
-    .. nbplot::
+    .. plot::
 
         >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
