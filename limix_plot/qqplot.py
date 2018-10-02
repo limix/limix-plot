@@ -148,7 +148,7 @@ def _plot_lambda(pv, ax):
 
     chi2 = st.chi2(df=1)
     lamb = chi2.isf(median(pv)) / chi2.median()
-    text = "$\lambda={:.3f}$".format(lamb)
+    text = "$\\lambda={:.3f}$".format(lamb)
     ax.text(
         0.40,
         0.75,

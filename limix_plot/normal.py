@@ -66,7 +66,7 @@ def _draw_normal(axis, mean, scale, nstd, color):
     axis.plot([mean, mean], [0, max_pdf], color=color, linestyle="--")
 
     axis.annotate(
-        "$\mu$",
+        r"$\mu$",
         xy=(mean + 0.6 * scale, max_pdf),
         horizontalalignment="center",
         verticalalignment="bottom",
@@ -82,9 +82,9 @@ def _draw_normal(axis, mean, scale, nstd, color):
     axis.plot([left, left], [0, top], color=color, linestyle="--")
 
     if int(nstd) == nstd:
-        mu_sigma = "$\mu+%d\sigma$" % nstd
+        mu_sigma = "$\\mu+%d\\sigma$" % nstd
     else:
-        mu_sigma = "$\mu+%.1f\sigma$" % nstd
+        mu_sigma = "$\\mu+%.1f\\sigma$" % nstd
 
     axis.annotate(
         mu_sigma,
