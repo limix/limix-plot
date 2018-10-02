@@ -64,7 +64,6 @@ def manhattan(
         >>> ax = plt.gca()
         >>> plt.axhline(-log10(1e-7), color='red')  # doctest: +SKIP
         >>> ax.set_ylim(2, ax.get_ylim()[1])  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
     """
     import pandas as pd
 

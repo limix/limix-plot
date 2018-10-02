@@ -28,7 +28,6 @@ def image(file, ax=None):
         >>> plt = get_pyplot()
         >>> file = lp.load_dataset("dali")
         >>> lp.image(file)  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
         >>> file.close()
     """
     import imghdr

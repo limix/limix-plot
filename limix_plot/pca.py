@@ -34,7 +34,6 @@ def pca(X, pts_kws=None, ax=None):
         >>> random = RandomState(0)
         >>> X = random.randn(30, 10)
         >>> lp.pca(X)  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
     """
     from sklearn import decomposition
 

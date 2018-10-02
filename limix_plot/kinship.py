@@ -38,7 +38,6 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
         >>> plt = get_pyplot()
         >>> K = lp.load_dataset("kinship")
         >>> lp.kinship(K)  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
     """
     plt = get_pyplot()
 

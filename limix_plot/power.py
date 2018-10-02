@@ -46,7 +46,6 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
         >>> lp.power(pv0, label='label0')  # doctest: +SKIP
         >>> ax = lp.power(pv1, label='label1')
         >>> ax.legend(loc='best')  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
     """
     plt = get_pyplot()
 

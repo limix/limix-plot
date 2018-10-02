@@ -77,16 +77,13 @@ def qqplot(
         >>> pv2 = random.rand(10000)
         >>>
         >>> lp.qqplot(pv0)  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
 
         >>> lp.qqplot(pv0)  # doctest: +SKIP
         >>> lp.qqplot(pv1, line=False, alpha=None)  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
 
         >>> lp.qqplot(pv1)  # doctest: +SKIP
         >>> lp.qqplot(pv2, line=False, alpha=None)  # doctest: +SKIP
         >>> lp.box_aspect()  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
 
         >>> lp.qqplot(pv0, label='label0', band_kws=dict(color='#EE0000',
         ...                                              alpha=0.2))  # doctest: +SKIP
@@ -94,7 +91,6 @@ def qqplot(
         >>> ax = lp.qqplot(pv2, label='label2', line=False,
         ...                alpha=None, pts_kws=dict(marker='*'))  # doctest: +SKIP
         >>> ax.legend()  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
     """
     plt = get_pyplot()
 
@@ -210,7 +206,7 @@ def _rank_confidence_band(nranks, significance_level, ok):
     k0 = ascontiguousarray(k0[ok])
     k1 = ascontiguousarray(k1[ok])
 
-    my_ok = k1 / k0 / (k1[0]/k0[0]) > 1e-4
+    my_ok = k1 / k0 / (k1[0] / k0[0]) > 1e-4
     k0 = ascontiguousarray(k0[my_ok])
     k1 = ascontiguousarray(k1[my_ok])
 

@@ -34,7 +34,6 @@ def normal(x, bins=20, nstd=2, ax=None):
         >>> random = RandomState(10)
         >>> x = random.randn(100)
         >>> lp.normal(x)  # doctest: +SKIP
-        >>> plt.show()  # doctest: +SKIP
     """
     import scipy.stats as st
 

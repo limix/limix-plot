@@ -35,8 +35,6 @@ class ConsensusCurve(object):
         >>> plt.plot(x, y)  # doctest: +SKIP
         >>> ax.fill_between(x, ybottom, ytop, lw=0, edgecolor='None', facecolor='blue', 
         ...                 alpha=0.25, interpolate=True)  # doctest: +SKIP
-        >>>
-        >>> plt.show()  # doctest: +SKIP
     """
 
     def __init__(self):
