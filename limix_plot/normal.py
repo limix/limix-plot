@@ -1,4 +1,3 @@
-from numpy import arange, asarray, mean as _mean, std as _std
 from ._plt import get_pyplot
 
 
@@ -35,6 +34,7 @@ def normal(x, bins=20, nstd=2, ax=None):
         >>> x = random.randn(100)
         >>> lp.normal(x)  # doctest: +SKIP
     """
+    from numpy import arange, asarray, mean as _mean, std as _std
     import scipy.stats as st
 
     plt = get_pyplot()

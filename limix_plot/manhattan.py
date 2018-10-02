@@ -1,6 +1,5 @@
 from __future__ import division
 
-from numpy import asarray, cumsum, flipud, log10, mean, unique
 from ._plt import get_pyplot
 
 
@@ -65,6 +64,7 @@ def manhattan(
         >>> plt.axhline(-log10(1e-7), color='red')  # doctest: +SKIP
         >>> ax.set_ylim(2, ax.get_ylim()[1])  # doctest: +SKIP
     """
+    from numpy import log10, unique
     import pandas as pd
 
     plt = get_pyplot()
@@ -122,6 +122,7 @@ def manhattan(
 
 
 def _plot_points(ax, df, alpha, null_style, alt_style):
+    from numpy import log10
 
     null_df = df.loc[df["pv"] >= alpha, :]
     alt_df = df.loc[df["pv"] < alpha, :]
@@ -131,6 +132,8 @@ def _plot_points(ax, df, alpha, null_style, alt_style):
 
 
 def _set_ticks(ax, chrom_bounds, chrom_labels):
+    from numpy import asarray, mean
+
     n = len(chrom_bounds)
     xticks = asarray([mean(chrom_bounds[i]) for i in range(n)])
     ax.set_xticks(xticks)
@@ -138,6 +141,8 @@ def _set_ticks(ax, chrom_bounds, chrom_labels):
 
 
 def _abs_pos(df):
+    from numpy import cumsum, flipud
+
     order = df["order"].unique()
     chrom_ends = [df["pos"][df["order"] == c].max() for c in order]
 
@@ -172,6 +177,8 @@ def _isint(i):
 
 
 def _chr_precedence(df):
+    from numpy import unique
+
     uchr = unique(df["chr"].values)
     nchr = [int(i) for i in uchr if _isint(i)]
     if len(nchr) > 0:

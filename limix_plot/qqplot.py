@@ -1,20 +1,5 @@
 from __future__ import division
 
-from numpy import (
-    arange,
-    ascontiguousarray,
-    flipud,
-    linspace,
-    log10,
-    ones,
-    percentile,
-    searchsorted,
-    sort,
-    asarray,
-    median,
-)
-from numpy import sum as npsum
-from numpy import where
 from ._plt import get_pyplot
 
 
@@ -92,6 +77,8 @@ def qqplot(
         ...                alpha=None, pts_kws=dict(marker='*'))  # doctest: +SKIP
         >>> ax.legend()  # doctest: +SKIP
     """
+    from numpy import arange, log10, sort, asarray
+
     plt = get_pyplot()
 
     a = asarray(a)
@@ -156,6 +143,7 @@ def qqplot(
 
 
 def _plot_lambda(pv, ax):
+    from numpy import median
     import scipy.stats as st
 
     chi2 = st.chi2(df=1)
@@ -191,11 +179,14 @@ def _adjust_lambda_texts(ax):
 
 
 def _expected(n):
+    from numpy import linspace, flipud, log10
+
     lnpv = linspace(1 / (n + 1), n / (n + 1), n, endpoint=True)
     return flipud(-log10(lnpv))
 
 
 def _rank_confidence_band(nranks, significance_level, ok):
+    from numpy import arange, flipud, ascontiguousarray
     from scipy.special import betaincinv
 
     alpha = significance_level
@@ -217,6 +208,7 @@ def _rank_confidence_band(nranks, significance_level, ok):
 
 
 def _plot_confidence_band(ok, null_qvals, significance_level, ax, qmax, band_kws):
+    from numpy import log10
 
     (cb_ok, bo, to) = _rank_confidence_band(len(null_qvals), significance_level, ok)
 
@@ -229,6 +221,8 @@ def _plot_confidence_band(ok, null_qvals, significance_level, ax, qmax, band_kws
 
 
 def _subsample(pvalues, cutoff):
+    from numpy import ones, percentile, log10, linspace, searchsorted, sum, where
+
     resolution = 500
 
     if len(pvalues) <= resolution:
@@ -241,7 +235,7 @@ def _subsample(pvalues, cutoff):
     qv_min = qv[-1]
     qv_max = qv[0]
 
-    snok = npsum(nok)
+    snok = sum(nok)
 
     resolution = min(snok, resolution)
 

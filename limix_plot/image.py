@@ -1,4 +1,3 @@
-from numpy.compat import basestring, is_pathlib_path
 from ._plt import get_pyplot
 
 
@@ -31,6 +30,7 @@ def image(file, ax=None):
         >>> file.close()
     """
     import imghdr
+    from numpy.compat import basestring, is_pathlib_path
 
     plt = get_pyplot()
 

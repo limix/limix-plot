@@ -1,6 +1,5 @@
 from __future__ import division
 
-from numpy import asarray
 from ._plt import get_pyplot
 
 
@@ -36,6 +35,7 @@ def pca(X, pts_kws=None, ax=None):
         >>> lp.pca(X)  # doctest: +SKIP
     """
     from sklearn import decomposition
+    from numpy import asarray
 
     plt = get_pyplot()
 

@@ -1,7 +1,5 @@
 from __future__ import absolute_import, division
 
-from numpy import asarray, logical_and, ones, sqrt
-
 
 class ConsensusCurve(object):
     r"""Consolidate multiple curves in a single one.
@@ -51,6 +49,8 @@ class ConsensusCurve(object):
         y : array_like
             y-coordinate values.
         """
+        from numpy import asarray
+
         self._x.append(asarray(x))
         self._y.append(asarray(y))
 
@@ -81,6 +81,8 @@ class ConsensusCurve(object):
 
 
 def _2dbulk(x, left, right, y):
+    from numpy import asarray, logical_and
+
     xbulk = []
     ybulk = []
     for (i, xi) in enumerate(x):
@@ -92,6 +94,8 @@ def _2dbulk(x, left, right, y):
 
 
 def _consensus_curve(x, y, std_dev=3.0):
+    from numpy import ones, sqrt
+
     n = -1
     for xi in x:
         n = max(len(xi), n)

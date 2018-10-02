@@ -1,7 +1,6 @@
 from __future__ import division
 
 import warnings
-from numpy import argsort, asarray, clip, inf, percentile
 from ._plt import get_pyplot
 
 
@@ -39,6 +38,8 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
         >>> K = lp.load_dataset("kinship")
         >>> lp.kinship(K)  # doctest: +SKIP
     """
+    from numpy import asarray, clip, percentile
+
     plt = get_pyplot()
 
     ax = plt.gca() if ax is None else ax
@@ -71,6 +72,7 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
 
 
 def _infer_clustering(K):
+    from numpy import inf
     from sklearn.metrics import silhouette_score
 
     scores = []
@@ -106,5 +108,7 @@ def _cluster(K, n):
 
 
 def _clustering(K, n):
+    from numpy import argsort
+
     idx = argsort(_cluster(K, n))
     return K[idx, :][:, idx]

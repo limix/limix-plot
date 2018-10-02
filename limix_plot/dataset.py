@@ -1,15 +1,7 @@
 import io
 import sys
-from bz2 import decompress
-
-from numpy import load
 
 PY2 = sys.version_info < (3,)
-
-if PY2:
-    from urllib import urlopen
-else:
-    from urllib.request import urlopen
 
 
 def load_dataset(name):
@@ -25,7 +17,14 @@ def load_dataset(name):
     Numpy array, BytesIO, DataFrame : Selected dataset.
     """
 
+    from bz2 import decompress
     from pandas import read_pickle
+    from numpy import load
+
+    if PY2:
+        from urllib import urlopen
+    else:
+        from urllib.request import urlopen
 
     if name == "kinship":
         c = urlopen("http://rest.s3for.me/limix/1000G_kinship.npy").read()

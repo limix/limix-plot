@@ -1,4 +1,3 @@
-from numpy import inf
 from ._plt import get_pyplot
 
 
@@ -13,6 +12,8 @@ def box_aspect(ax=None):
     ax : matplotlib Axes
         Returns the Axes object with the plot for further tweaking.
     """
+    from numpy import inf
+
     plt = get_pyplot()
 
     if ax is None:
