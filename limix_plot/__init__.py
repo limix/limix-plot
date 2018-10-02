@@ -15,7 +15,7 @@ from .pca import pca
 from .power import power
 from .qqplot import qqplot
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 __all__ = [
     "__version__",
