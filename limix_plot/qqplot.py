@@ -48,11 +48,9 @@ def qqplot(
     --------
     .. plot::
 
-        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>> from numpy.random import RandomState
         >>>
-        >>> plt = get_pyplot()
         >>> random = RandomState(1)
         >>>
         >>> pv0 = random.rand(10000)
@@ -61,23 +59,24 @@ def qqplot(
         >>> pv1 = random.rand(10000)
         >>> pv2 = random.rand(10000)
         >>>
-        >>> lp.qqplot(pv0)  # doctest: +SKIP
+        >>> _ = lp.qqplot(pv0)
 
-        >>> lp.qqplot(pv0)  # doctest: +SKIP
-        >>> lp.qqplot(pv1, line=False, alpha=None)  # doctest: +SKIP
+        >>> _ = lp.qqplot(pv0)
+        >>> _ = lp.qqplot(pv1, line=False, alpha=None)
 
-        >>> lp.qqplot(pv1)  # doctest: +SKIP
-        >>> lp.qqplot(pv2, line=False, alpha=None)  # doctest: +SKIP
-        >>> lp.box_aspect()  # doctest: +SKIP
+        >>> _ = lp.qqplot(pv1)
+        >>> _ = lp.qqplot(pv2, line=False, alpha=None)
+        >>> _ = lp.box_aspect()
 
-        >>> lp.qqplot(pv0, label='label0', band_kws=dict(color='#EE0000',
-        ...                                              alpha=0.2))  # doctest: +SKIP
-        >>> lp.qqplot(pv1, label='label1', line=False, alpha=None)  # doctest: +SKIP
+        >>> _ = lp.qqplot(pv0, label='label0', band_kws=dict(color='#EE0000',
+        ...                alpha=0.2));
+        >>> _ = lp.qqplot(pv1, label='label1', line=False, alpha=None);
         >>> ax = lp.qqplot(pv2, label='label2', line=False,
-        ...                alpha=None, pts_kws=dict(marker='*'))  # doctest: +SKIP
-        >>> ax.legend()  # doctest: +SKIP
+        ...                alpha=None, pts_kws=dict(marker='*'));
+        >>> _ = ax.legend()
+        >>> lp.show()
     """
-    from numpy import arange, log10, sort, asarray
+    from numpy import asarray
 
     plt = get_pyplot()
 
@@ -88,56 +87,56 @@ def qqplot(
     if ax is None:
         ax = plt.gca()
 
-    if pts_kws is None:
-        pts_kws = dict()
-    if "marker" not in pts_kws:
-        pts_kws["marker"] = "o"
-    if "linestyle" not in pts_kws:
-        pts_kws["linestyle"] = ""
-    if "markeredgecolor" not in pts_kws:
-        pts_kws["markeredgecolor"] = None
-    if label is not None:
-        pts_kws["label"] = label
+    # if pts_kws is None:
+    #     pts_kws = dict()
+    # if "marker" not in pts_kws:
+    #     pts_kws["marker"] = "o"
+    # if "linestyle" not in pts_kws:
+    #     pts_kws["linestyle"] = ""
+    # if "markeredgecolor" not in pts_kws:
+    #     pts_kws["markeredgecolor"] = None
+    # if label is not None:
+    #     pts_kws["label"] = label
 
-    if band_kws is None:
-        band_kws = dict()
-    if "facecolor" not in band_kws:
-        band_kws["facecolor"] = "#DDDDDD"
-    if "linewidth" not in band_kws:
-        band_kws["linewidth"] = 0
-    if "zorder" not in band_kws:
-        band_kws["zorder"] = -1
-    if "alpha" not in band_kws:
-        band_kws["alpha"] = 1.0
+    # if band_kws is None:
+    #     band_kws = dict()
+    # if "facecolor" not in band_kws:
+    #     band_kws["facecolor"] = "#DDDDDD"
+    # if "linewidth" not in band_kws:
+    #     band_kws["linewidth"] = 0
+    # if "zorder" not in band_kws:
+    #     band_kws["zorder"] = -1
+    # if "alpha" not in band_kws:
+    #     band_kws["alpha"] = 1.0
 
-    pv = sort(a)
-    ok = _subsample(pv, cutoff)
+    # pv = sort(a)
+    # ok = _subsample(pv, cutoff)
 
-    qnull = -log10((0.5 + arange(len(pv))) / len(pv))
-    qemp = -log10(pv)
+    # qnull = -log10((0.5 + arange(len(pv))) / len(pv))
+    # qemp = -log10(pv)
 
-    ax.plot(qnull[ok], qemp[ok], **pts_kws)
+    # ax.plot(qnull[ok], qemp[ok], **pts_kws)
 
-    qmax = max(qnull[ok].max(), qemp[ok].max())
+    # qmax = max(qnull[ok].max(), qemp[ok].max())
 
-    xmin = qnull[ok].min()
-    xmax = qnull[ok].max()
+    # xmin = qnull[ok].min()
+    # xmax = qnull[ok].max()
 
-    if line:
-        ax.plot([xmin, xmax], [xmin, xmax], color="black", zorder=0)
+    # if line:
+    #     ax.plot([xmin, xmax], [xmin, xmax], color="black", zorder=0)
 
-    if alpha is not None:
-        _plot_confidence_band(ok, qnull, alpha, ax, qmax, band_kws)
+    # if alpha is not None:
+    #     _plot_confidence_band(ok, qnull, alpha, ax, qmax, band_kws)
 
-    if show_lambda:
-        _plot_lambda(pv, ax)
-        _adjust_lambda_texts(ax)
+    # if show_lambda:
+    #     _plot_lambda(pv, ax)
+    #     _adjust_lambda_texts(ax)
 
-    ax.set_ylabel("-log$_{10}$pv observed")
-    ax.set_xlabel("-log$_{10}$pv expected")
+    # ax.set_ylabel("-log$_{10}$pv observed")
+    # ax.set_xlabel("-log$_{10}$pv expected")
 
-    ax.xaxis.set_ticks_position("both")
-    ax.yaxis.set_ticks_position("both")
+    # ax.xaxis.set_ticks_position("both")
+    # ax.yaxis.set_ticks_position("both")
 
     return ax
 

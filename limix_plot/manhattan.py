@@ -46,7 +46,6 @@ def manhattan(
     --------
     .. plot::
 
-        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>> from numpy import log10
         >>>
@@ -59,10 +58,10 @@ def manhattan(
         253  10  240788  0.007212
         258  10  246933  0.005676
         266  10  255222  0.005929
-        >>> lp.manhattan(df)  # doctest: +SKIP
-        >>> ax = plt.gca()
-        >>> plt.axhline(-log10(1e-7), color='red')  # doctest: +SKIP
-        >>> ax.set_ylim(2, ax.get_ylim()[1])  # doctest: +SKIP
+        >>> ax = lp.manhattan(df)
+        >>> _ = ax.axhline(-log10(1e-7), color='red')
+        >>> _ = ax.set_ylim(2, ax.get_ylim()[1])
+        >>> lp.show()
     """
     from numpy import log10, unique
     import pandas as pd

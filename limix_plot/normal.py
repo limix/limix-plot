@@ -26,13 +26,12 @@ def normal(x, bins=20, nstd=2, ax=None):
     .. plot::
 
         >>> from numpy.random import RandomState
-        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>>
-        >>> plt = get_pyplot()
         >>> random = RandomState(10)
         >>> x = random.randn(100)
-        >>> lp.normal(x)  # doctest: +SKIP
+        >>> _ = lp.normal(x)
+        >>> lp.show()
     """
     from numpy import arange, asarray, mean as _mean, std as _std
     import scipy.stats as st

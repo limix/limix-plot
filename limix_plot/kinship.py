@@ -31,12 +31,11 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
     --------
     .. plot::
 
-        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>>
-        >>> plt = get_pyplot()
         >>> K = lp.load_dataset("kinship")
-        >>> lp.kinship(K)  # doctest: +SKIP
+        >>> _ = lp.kinship(K)
+        >>> lp.show()
     """
     from numpy import asarray, clip, percentile
 

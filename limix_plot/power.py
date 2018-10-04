@@ -31,7 +31,6 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
     --------
     .. plot::
 
-        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>> from numpy.random import RandomState
         >>>
@@ -42,9 +41,10 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
         >>> pv0 = list(random.rand(nsnps))
         >>> pv1 = list(0.7 * random.rand(nsnps))
         >>>
-        >>> lp.power(pv0, label='label0')  # doctest: +SKIP
+        >>> _ = lp.power(pv0, label='label0')
         >>> ax = lp.power(pv1, label='label1')
-        >>> ax.legend(loc='best')  # doctest: +SKIP
+        >>> _ = ax.legend(loc='best')
+        >>> lp.show()
     """
     from numpy import asarray, linspace
 

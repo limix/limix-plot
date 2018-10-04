@@ -8,13 +8,11 @@ class ConsensusCurve(object):
     --------
     .. plot::
 
-        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>> from numpy import sort
         >>> from numpy.random import RandomState
         >>>
         >>> random = RandomState(1)
-        >>> plt = get_pyplot()
         >>>
         >>> n0 = 30
         >>> x0 = sort(random.rand(n0))
@@ -29,10 +27,11 @@ class ConsensusCurve(object):
         >>> cc.add(x1, y1)
         >>>
         >>> (x, ybottom, y, ytop) = cc.consensus()
-        >>> ax = plt.gca()
-        >>> plt.plot(x, y)  # doctest: +SKIP
-        >>> ax.fill_between(x, ybottom, ytop, lw=0, edgecolor='None', facecolor='blue', 
-        ...                 alpha=0.25, interpolate=True)  # doctest: +SKIP
+        >>> ax = lp.get_pyplot().gca()
+        >>> _ = ax.plot(x, y)
+        >>> _ = ax.fill_between(x, ybottom, ytop, lw=0, edgecolor='None',
+        ...                     facecolor='blue',  alpha=0.25, interpolate=True)
+        >>> lp.show()
     """
 
     def __init__(self):

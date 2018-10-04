@@ -21,13 +21,12 @@ def image(file, ax=None):
     --------
     .. plot::
 
-        >>> from limix_plot import get_pyplot
         >>> import limix_plot as lp
         >>>
-        >>> plt = get_pyplot()
         >>> file = lp.load_dataset("dali")
-        >>> lp.image(file)  # doctest: +SKIP
+        >>> _ = lp.image(file)
         >>> file.close()
+        >>> lp.show()
     """
     import imghdr
     from numpy.compat import basestring, is_pathlib_path

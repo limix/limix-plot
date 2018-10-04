@@ -44,5 +44,3 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_sidebars = {"**": ["relations.html", "searchbox.html"]}
 
 htmlhelp_basename = "limix-plotdoc"
-
-man_pages = [(master_doc, "limix-plot", "limix-plot Documentation", [author], 1)]

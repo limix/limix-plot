@@ -26,13 +26,12 @@ def pca(X, pts_kws=None, ax=None):
     .. plot::
 
         >>> import limix_plot as lp
-        >>> from limix_plot import get_pyplot
         >>> from numpy.random import RandomState
         >>>
-        >>> plt = get_pyplot()
         >>> random = RandomState(0)
         >>> X = random.randn(30, 10)
-        >>> lp.pca(X)  # doctest: +SKIP
+        >>> ax = lp.pca(X)
+        >>> lp.show()
     """
     from sklearn import decomposition
     from numpy import asarray
