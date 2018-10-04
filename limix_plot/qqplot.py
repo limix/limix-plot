@@ -76,7 +76,7 @@ def qqplot(
         >>> _ = ax.legend()
         >>> lp.show()
     """
-    from numpy import asarray
+    from numpy import asarray, sort, log10, arange
 
     plt = get_pyplot()
 
@@ -87,56 +87,56 @@ def qqplot(
     if ax is None:
         ax = plt.gca()
 
-    # if pts_kws is None:
-    #     pts_kws = dict()
-    # if "marker" not in pts_kws:
-    #     pts_kws["marker"] = "o"
-    # if "linestyle" not in pts_kws:
-    #     pts_kws["linestyle"] = ""
-    # if "markeredgecolor" not in pts_kws:
-    #     pts_kws["markeredgecolor"] = None
-    # if label is not None:
-    #     pts_kws["label"] = label
+    if pts_kws is None:
+        pts_kws = dict()
+    if "marker" not in pts_kws:
+        pts_kws["marker"] = "o"
+    if "linestyle" not in pts_kws:
+        pts_kws["linestyle"] = ""
+    if "markeredgecolor" not in pts_kws:
+        pts_kws["markeredgecolor"] = None
+    if label is not None:
+        pts_kws["label"] = label
 
-    # if band_kws is None:
-    #     band_kws = dict()
-    # if "facecolor" not in band_kws:
-    #     band_kws["facecolor"] = "#DDDDDD"
-    # if "linewidth" not in band_kws:
-    #     band_kws["linewidth"] = 0
-    # if "zorder" not in band_kws:
-    #     band_kws["zorder"] = -1
-    # if "alpha" not in band_kws:
-    #     band_kws["alpha"] = 1.0
+    if band_kws is None:
+        band_kws = dict()
+    if "facecolor" not in band_kws:
+        band_kws["facecolor"] = "#DDDDDD"
+    if "linewidth" not in band_kws:
+        band_kws["linewidth"] = 0
+    if "zorder" not in band_kws:
+        band_kws["zorder"] = -1
+    if "alpha" not in band_kws:
+        band_kws["alpha"] = 1.0
 
-    # pv = sort(a)
-    # ok = _subsample(pv, cutoff)
+    pv = sort(a)
+    ok = _subsample(pv, cutoff)
 
-    # qnull = -log10((0.5 + arange(len(pv))) / len(pv))
-    # qemp = -log10(pv)
+    qnull = -log10((0.5 + arange(len(pv))) / len(pv))
+    qemp = -log10(pv)
 
-    # ax.plot(qnull[ok], qemp[ok], **pts_kws)
+    ax.plot(qnull[ok], qemp[ok], **pts_kws)
 
-    # qmax = max(qnull[ok].max(), qemp[ok].max())
+    qmax = max(qnull[ok].max(), qemp[ok].max())
 
-    # xmin = qnull[ok].min()
-    # xmax = qnull[ok].max()
+    xmin = qnull[ok].min()
+    xmax = qnull[ok].max()
 
-    # if line:
-    #     ax.plot([xmin, xmax], [xmin, xmax], color="black", zorder=0)
+    if line:
+        ax.plot([xmin, xmax], [xmin, xmax], color="black", zorder=0)
 
-    # if alpha is not None:
-    #     _plot_confidence_band(ok, qnull, alpha, ax, qmax, band_kws)
+    if alpha is not None:
+        _plot_confidence_band(ok, qnull, alpha, ax, qmax, band_kws)
 
-    # if show_lambda:
-    #     _plot_lambda(pv, ax)
-    #     _adjust_lambda_texts(ax)
+    if show_lambda:
+        _plot_lambda(pv, ax)
+        _adjust_lambda_texts(ax)
 
-    # ax.set_ylabel("-log$_{10}$pv observed")
-    # ax.set_xlabel("-log$_{10}$pv expected")
+    ax.set_ylabel("-log$_{10}$pv observed")
+    ax.set_xlabel("-log$_{10}$pv expected")
 
-    # ax.xaxis.set_ticks_position("both")
-    # ax.yaxis.set_ticks_position("both")
+    ax.xaxis.set_ticks_position("both")
+    ax.yaxis.set_ticks_position("both")
 
     return ax
 

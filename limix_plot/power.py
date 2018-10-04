@@ -34,7 +34,6 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
         >>> import limix_plot as lp
         >>> from numpy.random import RandomState
         >>>
-        >>> plt = get_pyplot()
         >>> random = RandomState(1)
         >>> nsnps = 10000
         >>>

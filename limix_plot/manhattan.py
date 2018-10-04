@@ -49,7 +49,6 @@ def manhattan(
         >>> import limix_plot as lp
         >>> from numpy import log10
         >>>
-        >>> plt = get_pyplot()
         >>> df = lp.load_dataset('gwas')
         >>> print(df.head())
             chr     pos        pv
