@@ -14,8 +14,9 @@ from .normal import normal
 from .pca import pca
 from .power import power
 from .qqplot import qqplot
+from ._show import show
 
-__version__ = "0.0.6"
+__version__ = "0.0.7"
 
 __all__ = [
     "__version__",
@@ -31,4 +32,5 @@ __all__ = [
     "power",
     "qqplot",
     "test",
+    "show",
 ]
