@@ -35,13 +35,14 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
         >>> from numpy import log10
         >>>
         >>> df = lp.load_dataset('gwas')
+        >>> df = df.rename(columns={"chr": "chrom"})
         >>> print(df.head())
             chrom     pos        pv
-        234  10  224239  0.008867
-        239  10  229681  0.008482
-        253  10  240788  0.007212
-        258  10  246933  0.005676
-        266  10  255222  0.005929
+        234    10  224239  0.008867
+        239    10  229681  0.008482
+        253    10  240788  0.007212
+        258    10  246933  0.005676
+        266    10  255222  0.005929
         >>> ax = lp.manhattan(df)
         >>> _ = ax.axhline(-log10(1e-7), color='red')
         >>> _ = ax.set_ylim(2, ax.get_ylim()[1])
