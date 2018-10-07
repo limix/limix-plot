@@ -2,6 +2,9 @@ r"""Plotting library for genetics."""
 
 from __future__ import absolute_import
 
+import warnings
+
+
 from ._plt import get_pyplot
 from ._testit import test
 from .consensus import ConsensusCurve
@@ -16,7 +19,10 @@ from .power import power
 from .qqplot import qqplot
 from ._show import show
 
-__version__ = "0.0.8"
+warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
+
+__version__ = "0.0.9"
 
 __all__ = [
     "__version__",
