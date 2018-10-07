@@ -36,7 +36,7 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
         >>>
         >>> df = lp.load_dataset('gwas')
         >>> print(df.head())
-            chr     pos        pv
+            chrom     pos        pv
         234  10  224239  0.008867
         239  10  229681  0.008482
         253  10  240788  0.007212
@@ -70,10 +70,10 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
 
     ax = plt.gca() if ax is None else ax
 
-    data["chr"] = data["chr"].astype(str)
+    data["chrom"] = data["chrom"].astype(str)
     data["pos"] = data["pos"].astype(int)
     chr_order = _chr_precedence(data)
-    data["order"] = ("candidate", [chr_order[i] for i in data["chr"].values])
+    data["order"] = ("candidate", [chr_order[i] for i in data["chrom"].values])
 
     data = data.sortby(["order", "pos"])
 
@@ -101,7 +101,7 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
     ax.set_ylabel("-log$_{10}$pv")
     ax.set_xlabel("chromosome")
 
-    u = unique(data["chr"].values)
+    u = unique(data["chrom"].values)
     chrom_labels = sorted(u, key=lambda x: chr_order[x])
     _set_ticks(ax, _chrom_bounds(data), chrom_labels)
 
@@ -168,7 +168,7 @@ def _isint(i):
 def _chr_precedence(data):
     from numpy import unique
 
-    uchr = unique(data["chr"].values)
+    uchr = unique(data["chrom"].values)
     nchr = [int(i) for i in uchr if _isint(i)]
     if len(nchr) > 0:
         offset = max(nchr)
