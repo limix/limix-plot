@@ -1,6 +1,5 @@
 from __future__ import division
 
-import warnings
 from ._plt import get_pyplot
 
 
@@ -96,6 +95,8 @@ def _infer_clustering(K):
 
 
 def _cluster(K, n):
+    import warnings
+
     from sklearn.cluster import SpectralClustering
 
     with warnings.catch_warnings():

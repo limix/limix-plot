@@ -1,7 +1,6 @@
-from os import environ as _environ
-
-
 def get_pyplot():
+    from os import environ as _environ
+
     if get_pyplot.pyplot is not None:
         return get_pyplot.pyplot
 

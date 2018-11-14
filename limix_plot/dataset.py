@@ -1,4 +1,3 @@
-import io
 import sys
 
 PY2 = sys.version_info < (3,)
@@ -16,7 +15,7 @@ def load_dataset(name):
     -------
     Numpy array, BytesIO, DataFrame : Selected dataset.
     """
-
+    import io
     from bz2 import decompress
     from pandas import read_pickle
     from numpy import load
