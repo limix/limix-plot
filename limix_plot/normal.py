@@ -45,7 +45,7 @@ def normal(x, bins=20, nstd=2, ax=None):
     mean_x = _mean(x)
     std_x = _std(x)
 
-    xvals = arange(mean_x - 5 * std_x, mean_x + 5 * std_x, .001)
+    xvals = arange(mean_x - 5 * std_x, mean_x + 5 * std_x, 0.001)
     yvals = st.norm.pdf(xvals, mean_x, std_x)
 
     ax.hist(x, bins, density=True)
