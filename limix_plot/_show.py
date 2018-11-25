@@ -4,7 +4,6 @@ def show():
     if mpl.get_backend().lower() == "agg":
         return None
 
-    from limix import plot
+    from ._plt import get_pyplot
 
-    plt = plot.get_pyplot()
-    return plt.show()
+    return get_pyplot().show()
