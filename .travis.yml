@@ -5,8 +5,6 @@ python:
 env:
 - PKG_NAME=limix_plot
 script:
-- mkdir -p ~/.config/matplotlib
-- 'echo "Backend : Agg" > ~/.config/matplotlib/matplotlibrc'
 - bash <(curl -fsSL https://raw.githubusercontent.com/horta/ci/master/travis.sh)
 notifications:
   email:
