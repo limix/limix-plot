@@ -36,6 +36,6 @@ def load_dataset(name):
     elif name == "gwas":
         c = urlopen("http://rest.s3for.me/limix/mdd_small.pkl.bz2").read()
         o = decompress(c)
-        return read_pickle(io.BytesIO(o))
+        return read_pickle(io.BytesIO(o), compression=None)
 
     raise ValueError("Unknown dataset {}.".format(name))
