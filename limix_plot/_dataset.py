@@ -1,10 +1,6 @@
-import sys
-
-PY2 = sys.version_info < (3,)
-
-
 def load_dataset(name):
-    r"""Example datasets.
+    """
+    Example datasets.
 
     Parameters
     ----------
@@ -13,17 +9,14 @@ def load_dataset(name):
 
     Returns
     -------
-    Numpy array, BytesIO, DataFrame : Selected dataset.
+    data : ndarray, dataframe
+        Selected dataset.
     """
     import io
     from bz2 import decompress
     from pandas import read_pickle
     from numpy import load
-
-    if PY2:
-        from urllib import urlopen
-    else:
-        from urllib.request import urlopen
+    from urllib.request import urlopen
 
     if name == "kinship":
         c = urlopen("http://rest.s3for.me/limix/1000G_kinship.npy").read()

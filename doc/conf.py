@@ -45,3 +45,4 @@ html_sidebars = {"**": ["relations.html", "searchbox.html"]}
 
 htmlhelp_basename = "limix-plotdoc"
 plot_formats = [("png", 80)]
+plot_include_source = True

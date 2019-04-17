@@ -1,10 +1,9 @@
-from __future__ import division
-
 from ._plt import get_pyplot
 
 
 def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
-    r"""Produce a manhattan plot.
+    """
+    Produce a manhattan plot.
 
     Parameters
     ----------
@@ -27,8 +26,8 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
     ax : matplotlib Axes
         Axes object with the plot for further tweaking.
 
-    Examples
-    --------
+    Example
+    -------
     .. plot::
 
         >>> import limix_plot as lp

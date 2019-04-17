@@ -2,7 +2,8 @@ from ._plt import get_pyplot
 
 
 def normal(x, bins=20, nstd=2, ax=None):
-    r"""Plot a fit of a normal distribution to the data in x.
+    """
+    Plot a fit of a normal distribution to the data in x.
 
     Parameters
     ----------
@@ -21,8 +22,8 @@ def normal(x, bins=20, nstd=2, ax=None):
     ax : matplotlib Axes
         Axes object with the plot for further tweaking.
 
-    Examples
-    --------
+    Example
+    -------
     .. plot::
 
         >>> from numpy.random import RandomState

@@ -1,10 +1,9 @@
-from __future__ import division
-
 from ._plt import get_pyplot
 
 
 def kinship(K, nclusters=1, img_kws=None, ax=None):
-    r"""Plot heatmap of a kinship matrix.
+    """
+    Plot heatmap of a kinship matrix.
 
     Parameters
     ----------
@@ -26,8 +25,8 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
     ax : matplotlib Axes
         Axes object with the plot for further tweaking.
 
-    Examples
-    --------
+    Example
+    -------
     .. plot::
 
         >>> import limix_plot as lp

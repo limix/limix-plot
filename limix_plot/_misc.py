@@ -2,8 +2,11 @@ from ._plt import get_pyplot
 
 
 def box_aspect(ax=None):
-    r"""Change to box aspect considering the plotted points.
+    """
+    Change to box aspect considering the plotted points.
 
+    Parameters
+    ----------
     ax : matplotlib axis, optional
         If provided, work on this axis.
 

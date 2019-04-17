@@ -1,10 +1,9 @@
-from __future__ import division
-
 from ._plt import get_pyplot
 
 
 def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
-    r"""Plot number of hits across significance levels.
+    """
+    Plot number of hits across significance levels.
 
     Parameters
     ----------
@@ -27,8 +26,8 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
     ax : matplotlib Axes
         Axes object with the plot for further tweaking.
 
-    Examples
-    --------
+    Example
+    -------
     .. plot::
 
         >>> import limix_plot as lp

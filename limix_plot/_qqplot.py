@@ -1,5 +1,3 @@
-from __future__ import division
-
 from ._plt import get_pyplot
 
 
@@ -14,7 +12,8 @@ def qqplot(
     ax=None,
     show_lambda=True,
 ):
-    r"""Quantile-Quantile plot of observed p-values versus theoretical ones.
+    """
+    Quantile-Quantile plot of observed p-values versus theoretical ones.
 
     Parameters
     ----------
@@ -44,8 +43,8 @@ def qqplot(
     ax : matplotlib Axes
         Axes object with the plot for further tweaking.
 
-    Examples
-    --------
+    Example
+    -------
     .. plot::
 
         >>> import limix_plot as lp

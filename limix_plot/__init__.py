@@ -1,23 +1,22 @@
-r"""Plotting library for genetics."""
-
-from __future__ import absolute_import
-
+"""
+Plotting library for genetics.
+"""
 
 from ._plt import get_pyplot
 from ._testit import test
-from .consensus import ConsensusCurve
-from .dataset import load_dataset
-from .image import image
-from .kinship import kinship
-from .manhattan import manhattan
-from .misc import box_aspect
-from .normal import normal
-from .pca import pca
-from .power import power
-from .qqplot import qqplot
+from ._consensus import ConsensusCurve
+from ._dataset import load_dataset
+from ._image import image
+from ._kinship import kinship
+from ._manhattan import manhattan
+from ._misc import box_aspect
+from ._normal import normal
+from ._pca import pca
+from ._power import power
+from ._qqplot import qqplot
 from ._show import show
 
-__version__ = "0.0.12"
+__version__ = "0.1.0"
 
 __all__ = [
     "__version__",

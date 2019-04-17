@@ -1,10 +1,9 @@
-from __future__ import division
-
 from ._plt import get_pyplot
 
 
 def pca(X, pts_kws=None, ax=None):
-    r"""Plot the first two principal components of a design matrix.
+    """
+    Plot the first two principal components of a design matrix.
 
     Parameters
     ----------

@@ -2,7 +2,8 @@ from ._plt import get_pyplot
 
 
 def image(file, ax=None):
-    r"""Show an image.
+    """
+    Show an image.
 
     Parameters
     ----------
@@ -17,8 +18,8 @@ def image(file, ax=None):
     ax : matplotlib Axes
         Axes object with the plot for further tweaking.
 
-    Examples
-    --------
+    Example
+    -------
     .. plot::
 
         >>> import limix_plot as lp

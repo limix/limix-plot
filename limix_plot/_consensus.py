@@ -1,11 +1,9 @@
-from __future__ import absolute_import, division
+class ConsensusCurve:
+    """
+    Consolidate multiple curves in a single one.
 
-
-class ConsensusCurve(object):
-    r"""Consolidate multiple curves in a single one.
-
-    Examples
-    --------
+    Example
+    -------
     .. plot::
 
         >>> import limix_plot as lp
@@ -39,7 +37,8 @@ class ConsensusCurve(object):
         self._y = []
 
     def add(self, x, y):
-        r"""Add a new curve.
+        """
+        Add a new curve.
 
         Parameters
         ----------
@@ -54,7 +53,8 @@ class ConsensusCurve(object):
         self._y.append(asarray(y))
 
     def consensus(self, std_dev=3.0):
-        r"""Return a consensus curve.
+        """
+        Return a consensus curve.
 
         Parameters
         ----------
