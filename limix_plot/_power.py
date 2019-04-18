@@ -21,11 +21,6 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
         The target handle for this figure. If ``None``, the current axes is
         set.
 
-    Returns
-    -------
-    ax : matplotlib Axes
-        Axes object with the plot for further tweaking.
-
     Example
     -------
     .. plot::
@@ -39,10 +34,9 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
         >>> pv0 = list(random.rand(nsnps))
         >>> pv1 = list(0.7 * random.rand(nsnps))
         >>>
-        >>> _ = lp.power(pv0, label='label0')
-        >>> ax = lp.power(pv1, label='label1')
-        >>> _ = ax.legend(loc='best')
-        >>> lp.show()
+        >>> lp.power(pv0, label='label0')
+        >>> lp.power(pv1, label='label1')
+        >>> _ = lp.get_pyplot().legend(loc='best')
     """
     from numpy import asarray, linspace
 
@@ -65,8 +59,6 @@ def power(pv, label=None, alphas=None, pts_kws=None, ax=None):
 
     ax.set_xlabel("significance level")
     ax.set_ylabel("number of hits")
-
-    return ax
 
 
 def _collect_nhits(pv, alphas):

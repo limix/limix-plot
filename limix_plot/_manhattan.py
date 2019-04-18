@@ -21,11 +21,6 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
         The target handle for this figure. If ``None``, the current axes is
         set.
 
-    Returns
-    -------
-    ax : matplotlib Axes
-        Axes object with the plot for further tweaking.
-
     Example
     -------
     .. plot::
@@ -42,10 +37,10 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
         253    10  240788  0.007212
         258    10  246933  0.005676
         266    10  255222  0.005929
-        >>> ax = lp.manhattan(df)
-        >>> _ = ax.axhline(-log10(1e-7), color='red')
-        >>> _ = ax.set_ylim(2, ax.get_ylim()[1])
-        >>> lp.show()
+        >>> lp.manhattan(df)
+        >>> plt = lp.get_pyplot()
+        >>> _ = plt.axhline(-log10(1e-7), color='red')
+        >>> _ = plt.ylim(2, plt.ylim()[1])
     """
     from numpy import log10, unique
     from xarray import DataArray
@@ -104,8 +99,6 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
     u = unique(data["chrom"].values)
     chrom_labels = sorted(u, key=lambda x: chr_order[x])
     _set_ticks(ax, _chrom_bounds(data), chrom_labels)
-
-    return ax
 
 
 def _plot_points(ax, data, alpha, null_style, alt_style):

@@ -20,11 +20,6 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
         The target handle for this figure. If ``None``, the current axes is
         set.
 
-    Returns
-    -------
-    ax : matplotlib Axes
-        Axes object with the plot for further tweaking.
-
     Example
     -------
     .. plot::
@@ -32,8 +27,7 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
         >>> import limix_plot as lp
         >>>
         >>> K = lp.load_dataset("kinship")
-        >>> _ = lp.kinship(K)
-        >>> lp.show()
+        >>> lp.kinship(K)
     """
     from numpy import asarray, clip, percentile
 
@@ -64,8 +58,6 @@ def kinship(K, nclusters=1, img_kws=None, ax=None):
     ax.xaxis.set_ticks([])
     ax.yaxis.set_ticks([])
     ax.figure.colorbar(mesh, None, ax)
-
-    return ax
 
 
 def _infer_clustering(K):

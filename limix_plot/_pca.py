@@ -15,11 +15,6 @@ def pca(X, pts_kws=None, ax=None):
         The target handle for this figure. If ``None``, the current axes is
         set.
 
-    Returns
-    -------
-    ax : matplotlib Axes
-        Axes object with the plot for further tweaking.
-
     Example
     -------
     .. plot::
@@ -29,8 +24,7 @@ def pca(X, pts_kws=None, ax=None):
         >>>
         >>> random = RandomState(0)
         >>> X = random.randn(30, 10)
-        >>> ax = lp.pca(X)
-        >>> lp.show()
+        >>> lp.pca(X)
     """
     from sklearn import decomposition
     from numpy import asarray
@@ -59,5 +53,3 @@ def pca(X, pts_kws=None, ax=None):
 
     ax.set_xlabel("first component")
     ax.set_ylabel("second component")
-
-    return ax

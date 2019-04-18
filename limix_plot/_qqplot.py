@@ -38,11 +38,6 @@ def qqplot(
         The target handle for this figure. If ``None``, the current axes is
         set.
 
-    Returns
-    -------
-    ax : matplotlib Axes
-        Axes object with the plot for further tweaking.
-
     Example
     -------
     .. plot::
@@ -58,22 +53,22 @@ def qqplot(
         >>> pv1 = random.rand(10000)
         >>> pv2 = random.rand(10000)
         >>>
-        >>> _ = lp.qqplot(pv0)
+        >>> lp.qqplot(pv0)
+        >>>
+        >>> lp.qqplot(pv0)
+        >>> lp.qqplot(pv1, line=False, alpha=None)
+        >>>
+        >>> lp.qqplot(pv1)
+        >>> lp.qqplot(pv2, line=False, alpha=None)
+        >>> lp.box_aspect()
+        >>>
 
-        >>> _ = lp.qqplot(pv0)
-        >>> _ = lp.qqplot(pv1, line=False, alpha=None)
-
-        >>> _ = lp.qqplot(pv1)
-        >>> _ = lp.qqplot(pv2, line=False, alpha=None)
-        >>> _ = lp.box_aspect()
-
-        >>> _ = lp.qqplot(pv0, label='label0', band_kws=dict(color='#EE0000',
-        ...                alpha=0.2));
-        >>> _ = lp.qqplot(pv1, label='label1', line=False, alpha=None);
-        >>> ax = lp.qqplot(pv2, label='label2', line=False,
-        ...                alpha=None, pts_kws=dict(marker='*'));
-        >>> _ = ax.legend()
-        >>> lp.show()
+        >>> lp.qqplot(pv0, label='label0', band_kws=dict(color='#EE0000',
+        ...           alpha=0.2));
+        >>> lp.qqplot(pv1, label='label1', line=False, alpha=None);
+        >>> lp.qqplot(pv2, label='label2', line=False,
+        ...           alpha=None, pts_kws=dict(marker='*'));
+        >>> _ = lp.get_pyplot().legend()
     """
     from numpy import asarray, sort, log10, arange
 
@@ -136,8 +131,6 @@ def qqplot(
 
     ax.xaxis.set_ticks_position("both")
     ax.yaxis.set_ticks_position("both")
-
-    return ax
 
 
 def _plot_lambda(pv, ax):

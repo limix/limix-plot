@@ -9,11 +9,6 @@ def box_aspect(ax=None):
     ----------
     ax : matplotlib axis, optional
         If provided, work on this axis.
-
-    Returns
-    -------
-    ax : matplotlib Axes
-        Returns the Axes object with the plot for further tweaking.
     """
     from numpy import inf
 
@@ -46,5 +41,3 @@ def box_aspect(ax=None):
 
     ax.set_xticks(ticks)
     ax.set_yticks(ticks)
-
-    return ax

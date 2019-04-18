@@ -13,11 +13,6 @@ def image(file, ax=None):
         The target handle for this figure. If ``None``, the current axes is
         set.
 
-    Returns
-    -------
-    ax : matplotlib Axes
-        Axes object with the plot for further tweaking.
-
     Example
     -------
     .. plot::
@@ -25,9 +20,8 @@ def image(file, ax=None):
         >>> import limix_plot as lp
         >>>
         >>> file = lp.load_dataset("dali")
-        >>> _ = lp.image(file)
+        >>> lp.image(file)
         >>> file.close()
-        >>> lp.show()
     """
     import imghdr
     from numpy.compat import basestring, is_pathlib_path
@@ -54,5 +48,3 @@ def image(file, ax=None):
     finally:
         if own_fid:
             fid.close()
-
-    return ax

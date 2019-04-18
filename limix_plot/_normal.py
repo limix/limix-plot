@@ -17,11 +17,6 @@ def normal(x, bins=20, nstd=2, ax=None):
         The target handle for this figure. If ``None``, the current axes is
         set.
 
-    Returns
-    -------
-    ax : matplotlib Axes
-        Axes object with the plot for further tweaking.
-
     Example
     -------
     .. plot::
@@ -31,8 +26,7 @@ def normal(x, bins=20, nstd=2, ax=None):
         >>>
         >>> random = RandomState(10)
         >>> x = random.randn(100)
-        >>> _ = lp.normal(x)
-        >>> lp.show()
+        >>> lp.normal(x)
     """
     from numpy import arange, asarray, mean as _mean, std as _std
     import scipy.stats as st
@@ -54,8 +48,6 @@ def normal(x, bins=20, nstd=2, ax=None):
     ax.plot(xvals, yvals, color="red")
 
     _draw_normal(ax, mean_x, std_x, nstd, "red")
-
-    return ax
 
 
 def _draw_normal(axis, mean, scale, nstd, color):
