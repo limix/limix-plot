@@ -7,12 +7,22 @@ def get_pyplot():
     pyplot : :mod:`matplotlib.pyplot`
         MATLAB-like interface.
     """
+    from sys import platform as sys_pf
+    from matplotlib import rcParams
+
+    if get_pyplot.pyplot is not None:
+        return get_pyplot.pyplot
+
+    # Bug with matplotlib on macos:
+    # https://github.com/matplotlib/matplotlib/issues/10239
+    if "backend" not in rcParams and sys_pf == "darwin":
+        from matplotlib import use as _backend_use
+
+        _backend_use("TkAgg")
+
     from matplotlib import pyplot
 
-    if get_pyplot.pyplot is None:
-        get_pyplot.pyplot = pyplot
-
-    return get_pyplot.pyplot
+    get_pyplot.pyplot = pyplot
 
 
 get_pyplot.pyplot = None
