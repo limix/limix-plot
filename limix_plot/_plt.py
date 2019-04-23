@@ -23,6 +23,7 @@ def get_pyplot():
     from matplotlib import pyplot
 
     get_pyplot.pyplot = pyplot
+    return pyplot
 
 
 get_pyplot.pyplot = None
