@@ -1,7 +1,8 @@
 from ._plt import get_pyplot
 
 
-def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
+def manhattan(data, colora="#5689AC", colorb="#21334F", 
+              anno_pv_max=None, pts_kws=None, ax=None):
     """
     Produce a manhattan plot.
 
@@ -14,6 +15,8 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
         Points color of the first group.
     colorb : matplotlib color
         Points color of the second group.
+    anno_pv_max : float
+        Threshold of maximum p value for annotating data['id'] in the plot.
     pts_kws : dict, optional
         Keyword arguments forwarded to the matplotlib function used for
         plotting the points.
@@ -42,7 +45,7 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
         >>> _ = plt.axhline(-log10(1e-7), color='red')
         >>> _ = plt.ylim(2, plt.ylim()[1])
     """
-    from numpy import log10, unique
+    from numpy import log10, unique, where
     from xarray import DataArray
     import pandas as pd
 
@@ -89,6 +92,16 @@ def manhattan(data, colora="#5689AC", colorb="#21334F", pts_kws=None, ax=None):
         x = data.loc[ok]["abs_pos"]
         y = -log10(data.loc[ok].values)
         ax.plot(x, y, **pts_kws)
+        
+        if anno_pv_max is not None:
+            _idx = where(y > -log10(anno_pv_max))[0]
+            for _ii in _idx:
+                if 'id' in data.coords:
+                    _txt = data['id'].loc[ok].loc[_ii].values
+                else:
+                    _txt = (str(data['chrom'].loc[ok].loc[_ii].values) + "_" + 
+                            str(data['pos'].loc[ok].loc[_ii].values))
+                ax.annotate(_txt, (x[_ii], y[_ii]), ha='center')
 
     ax.set_xlim(data["abs_pos"].min(), data["abs_pos"].max())
     ax.set_ylim(0, ax.get_ylim()[1])
